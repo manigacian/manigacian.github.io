@@ -396,6 +396,11 @@ function rankPowerChange(){
 		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
 
 	}
+
+	console.log(firstHalf);
+	console.log(document.getElementById("progress").getAttribute("max").split("", 1));
+
+
 	if (document.getElementById("progress").getAttribute("max") < 10) {
 
 		secondHalf = "Houtian";
@@ -432,6 +437,10 @@ function rankPowerChange(){
 
 	}
 
+	console.log(secondHalf);
+	console.log(document.getElementById("progress").getAttribute("max"));
+
+	document.getElementById("currentRealm").innerHTML = firstHalf + secondHalf;
 
 }
 
