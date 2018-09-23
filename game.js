@@ -33,6 +33,20 @@ function increaseXp(currentXp, incrementAmount) {
 
 }
 
+function fixSave(){
+
+	if(getCookie("clickCost") >= 10){
+
+		checkCookie();
+
+	} else {
+
+		deleteLocalSave();
+
+	}
+
+}
+
 function passiveClicks(){
 
 	console.log(1);
@@ -527,13 +541,17 @@ function updateValues(){
 		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond + " cps");
 		tooltipAnchor.tooltip();
 
-		document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
+	document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
+	if (clickPerSecond >= 1){
 
 		clickId = setInterval(function(){
 
-			increaseXp(xp, incrementAmount);
+		increaseXp(xp, incrementAmount);
 
 		}, clickInterval)
+
+	}
+	
 
 
 }
