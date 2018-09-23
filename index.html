@@ -28,9 +28,11 @@
 
 			<h6 style = "text-align: center;" id = "currentPower">Power: 0.1</h6>
             <h6 style = "text-align: center;" id = "xp">XP: 0</h6>
-            <h6 style = "text-align: center;" id = "money">Money: 0</h6>
+            <h6 style = "text-align: center;" id = "money">Spirit Stones: 0</h6>
 
-			<input onclick = "increaseXp(xp, incrementAmount)" style = "width: 100%;" type = "image" src = "Assets/monk/(1)monk.png" id = "meditiate"></input>
+			<input onclick = "increaseXp(xp, incrementAmount)" style = "width: 75%; display: block; margin-left: auto; margin-right: auto; outline: none;" type = "image" src = "Assets/monk/transparent/monktransparent.png" id = "meditiate"></input>
+
+            <a onclick="passiveClicks()" id = "passiveClickBtn" style = "width: 100%" data-position = "bottom" data-tooltip = "Gain passive clicks per second - cost: 10 spirit stones, current: 0 cps" class = "tooltipped waves-effect waves-light btn">Secluded Meditation - 10 S.S.</a>
 
 		</div>
 
@@ -80,6 +82,16 @@
 				        <td id = "fifthFightPower">4.3</td>
 				        <td id = "fifthFightReward">625</td>
 				    </tr>
+                    <tr>
+                        <td><a onclick = "Fight('sixthFight')" id = "sixthFight" class="waves-effect waves-light btn">Fight the sect's leader</a><p id = "sixthFightDefeat"></p></td>
+                        <td id = "sixthFightPower">5.1</td>
+                        <td id = "sixthFightReward">3125</td>
+                    </tr>
+                    <tr>
+                        <td><a onclick = "Fight('seventhFight')" id = "seventhFight" class="waves-effect waves-light btn">Fight the whole sect at once</a><p id = "seventhFightDefeat"></p></td>
+                        <td id = "seventhFightPower">6.4</td>
+                        <td id = "seventhFightReward">15625</td>
+                    </tr>
 				    </tbody>
 				</table>
 
@@ -138,6 +150,22 @@
      		 				<td id = "fifthTrainReward">0.081</td>
 
      		 			</tr>
+
+                        <tr>
+
+                            <td><a onclick = "Train('sixthTrain')" id = "sixthTrain" class="waves-effect waves-light btn">Gain enlightenment from a dying star</a></td>
+                            <td id = "sixthTrainCost">100000</td>
+                            <td id = "sixthTrainReward">0.243</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td><a onclick = "Train('seventhTrain')" id = "seventhTrain" class="waves-effect waves-light btn">Massacre enemies to strengthen dao heart</a></td>
+                            <td id = "seventhTrainCost">1000000</td>
+                            <td id = "seventhTrainReward">0.729</td>
+
+                        </tr>
 
      		 		</tbody>
 

@@ -8,8 +8,10 @@ var legacyPoints = 0;
 var totalXp = 0;
 var lastLegacyPoints = 0;
 var newLegacyPoints = 0;
-
-
+var clickPerSecond = 0;
+var clickCost = 10;
+var baseClickInterval = 1000;
+var clickInterval = 1000;
 function increaseXp(currentXp, incrementAmount) {
 
 	currentXp = currentXp + incrementAmount;
@@ -31,6 +33,64 @@ function increaseXp(currentXp, incrementAmount) {
 
 }
 
+function passiveClicks(){
+
+	console.log(1);
+
+	if ((money >= clickCost)&&(clickPerSecond == 0)){
+
+		console.log(2);
+
+		money = money - clickCost;
+
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+
+		clickCost = clickCost * 2;
+
+		clickPerSecond = 1;
+
+		document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
+
+		var tooltipAnchor = $('#passiveClickBtn');
+		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond + " cps");
+		tooltipAnchor.tooltip();
+
+		var clickId = setInterval(function(){
+
+			increaseXp(xp, incrementAmount);
+
+		}, baseClickInterval)
+
+	} else if ((money >= clickCost)&&(clickPerSecond > 0)){
+
+		money = money - clickCost;
+
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+
+		clickCost = clickCost * 2;
+
+		clickPerSecond++;
+
+		var tooltipAnchor = $('#passiveClickBtn');
+		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond + " cps");
+		tooltipAnchor.tooltip();
+
+		document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
+
+		clickInterval = (baseClickInterval / clickPerSecond);
+
+		clearInterval(clickId);
+
+		clickId = setInterval(function(){
+
+			increaseXp(xp, incrementAmount);
+
+		}, clickInterval)
+
+	}
+
+}
+
 function rankup(){
 
 	if (isAtMax(xp, document.getElementById("progress").getAttribute("max")) == true) {
@@ -45,11 +105,11 @@ function rankup(){
 
 		rankPowerChange();
 
-		if (document.getElementById("currentRealm").innerHTML == "Late Xiantian"){
+		/*if (document.getElementById("currentRealm").innerHTML == "Late Xiantian"){
 
 			legacyUnlock();
 
-		}
+		}*/
 
 		increaseMax(document.getElementById("progress").getAttribute("max"));
 
@@ -98,7 +158,7 @@ function imageChange(){
 
 	if (document.getElementById("currentRealm").innerHTML == "Early Xiantian"){
 
-		document.getElementById("meditiate").src = "Assets/monk/(2)monk2.jpg";
+		document.getElementById("meditiate").src = "Assets/monk/transparent/monk2transparent.png";
 
 	} else if (document.getElementById("currentRealm").innerHTML == "Early Jindan"){
 
@@ -129,7 +189,7 @@ function Fight(fightId){
 
 		money = money + fightReward;
 
-		document.getElementById("money").innerHTML = "Money: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
 	} else if (power >= (fightPower * 0.85)) {
 
@@ -140,13 +200,13 @@ function Fight(fightId){
 
 			money = money + fightReward;
 
-			document.getElementById("money").innerHTML = "Money: " + money;
+			document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
 		} else {
 
 			console.log("defeat");
 
-			fightDefeat = "(Defeat)";
+			fightDefeat = "You've been defeated";
 			document.getElementById(defeatName).innerHTML = fightDefeat;
 
 		}
@@ -155,7 +215,7 @@ function Fight(fightId){
 
 		console.log("defeat");
 
-		fightDefeat = "(Defeat)";
+		fightDefeat = "You've been defeated";
 		document.getElementById(defeatName).innerHTML = fightDefeat;
 
 	}
@@ -174,7 +234,7 @@ function Train(trainId){
 
 		money = money - trainCost;
 
-		document.getElementById("money").innerHTML = "Money: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
 		incrementAmount = incrementAmount + trainReward;
 
@@ -192,7 +252,7 @@ function firstSwordPurchase(){
 
 		money = money - parseInt(document.getElementById("firstPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Money: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
 		power = power + 0.15;
 
@@ -211,7 +271,7 @@ function firstManualPurchase(){
 
 		money = money - parseInt(document.getElementById("secondPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Money: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
 		power = power + 0.15;
 
@@ -229,6 +289,8 @@ function firstCultivationPurchase(){
 
 		money = money - parseInt(document.getElementById("thirdPurchaseCost").innerHTML);
 
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+
 		cultivationTechnique = cultivationTechnique + 0.1;
 
 	}
@@ -243,7 +305,7 @@ function secondSwordPurchase(){
 
 		money = money - parseInt(document.getElementById("fourthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Money: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
 		power = power + 0.15;
 
@@ -262,7 +324,7 @@ function secondManualPurchase(){
 
 		money = money - parseInt(document.getElementById("fifthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Money: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
 		power = power + 0.15;
 
@@ -279,6 +341,8 @@ function secondCultivationPurchase(){
 		document.getElementById("sixthPurchaseRow").setAttribute("style", "display: none;");
 
 		money = money - parseInt(document.getElementById("sixthPurchaseCost").innerHTML);
+
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
 		cultivationTechnique = cultivationTechnique + 0.2;
 
@@ -318,7 +382,6 @@ function rankPowerChange(){
 		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
 
 	}
-
 	if (document.getElementById("progress").getAttribute("max") < 10) {
 
 		secondHalf = "Houtian";
@@ -355,7 +418,6 @@ function rankPowerChange(){
 
 	}
 
-	document.getElementById("currentRealm").innerHTML = firstHalf + secondHalf;
 
 }
 
@@ -420,19 +482,12 @@ function checkCookie() {
 
         loadLocalSave();
 
-        window.setInterval(localSave(), 60000);
-
-    } else {
-
-    	window.setInterval(localSave(), 60000);
-
     }
 }
 
 function loadLocalSave(){
 
 	xp = parseFloat(getCookie("xp"));
-	console.log(xp);
 	incrementAmount = parseFloat(getCookie("incrementAmount"));
 	power = parseFloat(getCookie("power"));
 	money = parseInt(getCookie("money"));
@@ -444,6 +499,8 @@ function loadLocalSave(){
 	document.getElementById("thirdTrainCost").innerHTML = parseInt(getCookie("thirdTrainCost"));
 	document.getElementById("fourthTrainCost").innerHTML = parseInt(getCookie("fourthTrainCost"));
 	document.getElementById("fifthTrainCost").innerHTML = parseInt(getCookie("fifthTrainCost"));
+	document.getElementById("fifthTrainCost").innerHTML = parseInt(getCookie("sixthTrainCost"));
+	document.getElementById("fifthTrainCost").innerHTML = parseInt(getCookie("seventhTrainCost"));
 	document.getElementById("firstPurchaseRow").setAttribute("style", getCookie("firstPurchaseRow"));
 	document.getElementById("secondPurchaseRow").setAttribute("style", getCookie("secondPurchaseRow"));
 	document.getElementById("thirdPurchaseRow").setAttribute("style", getCookie("thirdPurchaseRow"));
@@ -451,6 +508,10 @@ function loadLocalSave(){
 	document.getElementById("fifthPurchaseRow").setAttribute("style", getCookie("fifthPurchaseRow"));
 	document.getElementById("sixthPurchaseRow").setAttribute("style", getCookie("sixthPurchaseRow"));
 	document.getElementById("currentRealm").innerHTML = getCookie("currentRealm");
+	clickPerSecond = parseInt(getCookie("clickPerSecond"));
+	clickCost = parseInt(getCookie("clickCost"));
+	clickInterval = parseInt(getCookie("clickInterval"));
+
 
 	updateValues();
 }
@@ -459,8 +520,21 @@ function updateValues(){
 
 	document.getElementById("xp").innerHTML = "Xp: " + xp.toFixed(3);
 	document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
-	document.getElementById("money").innerHTML = "Money: " + money;
+	document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 	document.getElementById("progress").setAttribute("value", xp);
+	// fixing tooltip
+	var tooltipAnchor = $('#passiveClickBtn');
+		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond + " cps");
+		tooltipAnchor.tooltip();
+
+		document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
+
+		clickId = setInterval(function(){
+
+			increaseXp(xp, incrementAmount);
+
+		}, clickInterval)
+
 
 }
 
@@ -468,6 +542,7 @@ function deleteLocalSave(){
 
 	setCookie("user", "Player", -1);
 	setCookie("xp", xp, -1);
+
 	setCookie("incrementAmount", incrementAmount, -1);
 	setCookie("power", power, -1);
 	setCookie("money", money, -1);
@@ -479,6 +554,8 @@ function deleteLocalSave(){
 	setCookie("thirdTrainCost", parseInt(document.getElementById("thirdTrainCost").innerHTML), -1);
 	setCookie("fourthTrainCost", parseInt(document.getElementById("fourthTrainCost").innerHTML), -1);
 	setCookie("fifthTrainCost", parseInt(document.getElementById("fifthTrainCost").innerHTML), -1);
+	setCookie("sixthTrainCost", parseInt(document.getElementById("sixthTrainCost").innerHTML), -1);
+	setCookie("seventhTrainCost", parseInt(document.getElementById("seventhTrainCost").innerHTML), -1);
 	setCookie("firstPurchaseRow", document.getElementById("firstPurchaseRow").getAttribute("style"), -1);
 	setCookie("secondPurchaseRow", document.getElementById("secondPurchaseRow").getAttribute("style"), -1);
 	setCookie("thirdPurchaseRow", document.getElementById("thirdPurchaseRow").getAttribute("style"), -1);
@@ -486,6 +563,10 @@ function deleteLocalSave(){
 	setCookie("fifthPurchaseRow", document.getElementById("fifthPurchaseRow").getAttribute("style"), -1);
 	setCookie("sixthPurchaseRow", document.getElementById("sixthPurchaseRow").getAttribute("style"), -1);
 	setCookie("currentRealm", document.getElementById("currentRealm").innerHTML, -1);
+	setCookie("clickPerSecond", clickPerSecond, -1);
+	setCookie("clickCost", clickCost, -1);
+	setCookie("clickInterval", clickInterval, -1);
+	
 
 }
 
@@ -505,6 +586,8 @@ function localSave(){
 	setCookie("thirdTrainCost", parseInt(document.getElementById("thirdTrainCost").innerHTML), 1000);
 	setCookie("fourthTrainCost", parseInt(document.getElementById("fourthTrainCost").innerHTML), 1000);
 	setCookie("fifthTrainCost", parseInt(document.getElementById("fifthTrainCost").innerHTML), 1000);
+	setCookie("sixthTrainCost", parseInt(document.getElementById("sixthTrainCost").innerHTML), 1000);
+	setCookie("seventhTrainCost", parseInt(document.getElementById("seventhTrainCost").innerHTML), 1000);
 	setCookie("firstPurchaseRow", document.getElementById("firstPurchaseRow").getAttribute("style"), 1000);
 	setCookie("secondPurchaseRow", document.getElementById("secondPurchaseRow").getAttribute("style"), 1000);
 	setCookie("thirdPurchaseRow", document.getElementById("thirdPurchaseRow").getAttribute("style"), 1000);
@@ -512,7 +595,10 @@ function localSave(){
 	setCookie("fifthPurchaseRow", document.getElementById("fifthPurchaseRow").getAttribute("style"), 1000);
 	setCookie("sixthPurchaseRow", document.getElementById("sixthPurchaseRow").getAttribute("style"), 1000);
 	setCookie("currentRealm", document.getElementById("currentRealm").innerHTML, 1000);
-
+	setCookie("clickPerSecond", clickPerSecond, 1000);
+	setCookie("clickCost", clickCost, 1000);
+	setCookie("clickInterval", clickInterval, 1000);
+	
 	console.log("Saved!");
 
 }
@@ -531,6 +617,8 @@ setInterval( function() {
 	setCookie("thirdTrainCost", parseInt(document.getElementById("thirdTrainCost").innerHTML), 1000);
 	setCookie("fourthTrainCost", parseInt(document.getElementById("fourthTrainCost").innerHTML), 1000);
 	setCookie("fifthTrainCost", parseInt(document.getElementById("fifthTrainCost").innerHTML), 1000);
+	setCookie("sixthTrainCost", parseInt(document.getElementById("sixthTrainCost").innerHTML), 1000);
+	setCookie("seventhTrainCost", parseInt(document.getElementById("seventhTrainCost").innerHTML), 1000);
 	setCookie("firstPurchaseRow", document.getElementById("firstPurchaseRow").getAttribute("style"), 1000);
 	setCookie("secondPurchaseRow", document.getElementById("secondPurchaseRow").getAttribute("style"), 1000);
 	setCookie("thirdPurchaseRow", document.getElementById("thirdPurchaseRow").getAttribute("style"), 1000);
@@ -538,6 +626,10 @@ setInterval( function() {
 	setCookie("fifthPurchaseRow", document.getElementById("fifthPurchaseRow").getAttribute("style"), 1000);
 	setCookie("sixthPurchaseRow", document.getElementById("sixthPurchaseRow").getAttribute("style"), 1000);
 	setCookie("currentRealm", document.getElementById("currentRealm").innerHTML, 1000);
+	setCookie("clickPerSecond", clickPerSecond, 1000);
+	setCookie("clickCost", clickCost, 1000);
+	setCookie("clickInterval", clickInterval, 1000);
+
 
 	console.log("Saved!");
 }, 60000)
