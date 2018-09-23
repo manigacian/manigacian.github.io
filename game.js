@@ -10,8 +10,16 @@ var lastLegacyPoints = 0;
 var newLegacyPoints = 0;
 var clickPerSecond = 0;
 var clickCost = 10;
-var baseClickInterval = 1000;
+var baseClickInterval = 1500;
 var clickInterval = 1000;
+var passFightOne = false;
+var passFightTwo = false;
+var passFightThree = false;
+var passFightFour = false;
+var passFightFive = false;
+var passFightSix = false;
+var passFightSeven = false;
+
 function increaseXp(currentXp, incrementAmount) {
 
 	currentXp = currentXp + incrementAmount;
@@ -102,6 +110,66 @@ function passiveClicks(){
 		}, clickInterval)
 
 	}
+
+}
+
+function passiveFight(fightId, passiveFightMoney, number, time){
+
+	if(money >= passiveFightMoney){
+
+		passFightId = fightId + "Passive";
+
+		passiveFightPurchase(number);
+
+		money = money - passiveFightMoney;
+
+		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+
+		document.getElementById(passFightId).setAttribute("style", "display: none;")
+
+		setInterval(function(){
+
+		Fight(fightId);
+
+		}, time)
+
+	}
+
+
+}
+
+function passiveFightPurchase(number){
+
+	if(number == 1){
+
+		passFightOne = true;
+
+	} else if(number == 2){
+
+		passFightTwo = true;
+
+	} else if(number == 3){
+
+		passFightThree = true;
+
+	} else if(number == 4){
+
+		passFightFour = true;
+
+	} else if(number == 5){
+
+		passFightFive = true;
+
+	} else if(number == 6){
+
+		passFightSix = true;
+
+	} else if(number == 7){
+
+		passFightSeven = true;
+
+	}
+
 
 }
 
@@ -220,7 +288,8 @@ function Fight(fightId){
 
 			console.log("defeat");
 
-			fightDefeat = "You've been defeated";
+			document.getElementById(defeatName).setAttribute("style", "display: inline;");
+			fightDefeat = " You've been defeated!";
 			document.getElementById(defeatName).innerHTML = fightDefeat;
 
 		}
@@ -229,7 +298,8 @@ function Fight(fightId){
 
 		console.log("defeat");
 
-		fightDefeat = "You've been defeated";
+		document.getElementById(defeatName).setAttribute("style", "display: inline;");
+		fightDefeat = " You've been defeated!";
 		document.getElementById(defeatName).innerHTML = fightDefeat;
 
 	}
@@ -260,7 +330,7 @@ function Train(trainId){
 
 function firstSwordPurchase(){
 
-	if (parseInt(money) > parseInt(document.getElementById("firstPurchaseCost").innerHTML)){
+	if (parseInt(money) >= parseInt(document.getElementById("firstPurchaseCost").innerHTML)){
 
 		document.getElementById("firstPurchaseRow").setAttribute("style", "display:none;");
 
@@ -279,7 +349,7 @@ function firstSwordPurchase(){
 
 function firstManualPurchase(){
 
-	if (money > parseInt(document.getElementById("secondPurchaseCost").innerHTML)){
+	if (money >= parseInt(document.getElementById("secondPurchaseCost").innerHTML)){
 
 		document.getElementById("secondPurchaseRow").setAttribute("style", "display: none;");
 
@@ -297,7 +367,7 @@ function firstManualPurchase(){
 
 function firstCultivationPurchase(){
 
-	if (money > parseInt(document.getElementById("thirdPurchaseCost").innerHTML)){
+	if (money >= parseInt(document.getElementById("thirdPurchaseCost").innerHTML)){
 
 		document.getElementById("thirdPurchaseRow").setAttribute("style", "display: none;");
 
@@ -313,7 +383,7 @@ function firstCultivationPurchase(){
 
 function secondSwordPurchase(){
 
-	if (money > parseInt(document.getElementById("fourthPurchaseCost").innerHTML)){
+	if (money >= parseInt(document.getElementById("fourthPurchaseCost").innerHTML)){
 
 		document.getElementById("fourthPurchaseRow").setAttribute("style", "display:none;");
 
@@ -332,7 +402,7 @@ function secondSwordPurchase(){
 
 function secondManualPurchase(){
 
-	if (money > parseInt(document.getElementById("fifthPurchaseCost").innerHTML)){
+	if (money >= parseInt(document.getElementById("fifthPurchaseCost").innerHTML)){
 
 		document.getElementById("fifthPurchaseRow").setAttribute("style", "display: none;");
 
@@ -350,7 +420,7 @@ function secondManualPurchase(){
 
 function secondCultivationPurchase(){
 
-	if (money > parseInt(document.getElementById("sixthPurchaseCost").innerHTML)){
+	if (money >= parseInt(document.getElementById("sixthPurchaseCost").innerHTML)){
 
 		document.getElementById("sixthPurchaseRow").setAttribute("style", "display: none;");
 
@@ -522,8 +592,8 @@ function loadLocalSave(){
 	document.getElementById("thirdTrainCost").innerHTML = parseInt(getCookie("thirdTrainCost"));
 	document.getElementById("fourthTrainCost").innerHTML = parseInt(getCookie("fourthTrainCost"));
 	document.getElementById("fifthTrainCost").innerHTML = parseInt(getCookie("fifthTrainCost"));
-	document.getElementById("fifthTrainCost").innerHTML = parseInt(getCookie("sixthTrainCost"));
-	document.getElementById("fifthTrainCost").innerHTML = parseInt(getCookie("seventhTrainCost"));
+	document.getElementById("sixthTrainCost").innerHTML = parseInt(getCookie("sixthTrainCost"));
+	document.getElementById("seventhTrainCost").innerHTML = parseInt(getCookie("seventhTrainCost"));
 	document.getElementById("firstPurchaseRow").setAttribute("style", getCookie("firstPurchaseRow"));
 	document.getElementById("secondPurchaseRow").setAttribute("style", getCookie("secondPurchaseRow"));
 	document.getElementById("thirdPurchaseRow").setAttribute("style", getCookie("thirdPurchaseRow"));
@@ -534,7 +604,13 @@ function loadLocalSave(){
 	clickPerSecond = parseInt(getCookie("clickPerSecond"));
 	clickCost = parseInt(getCookie("clickCost"));
 	clickInterval = parseInt(getCookie("clickInterval"));
-
+	passFightOne = getCookie("passFightOne");
+	passFightTwo = getCookie("passFightTwo");
+	passFightThree = getCookie("passFightThree");
+	passFightFour = getCookie("passFightFour");
+	passFightFive = getCookie("passFightFive");
+	passFightSix= getCookie("passFightSix");
+	passFightSeven = getCookie("passFightSeven");
 
 	updateValues();
 }
@@ -560,8 +636,42 @@ function updateValues(){
 		}, clickInterval)
 
 	}
-	
 
+	passFightUpdate();
+
+}
+
+function passFightUpdate(){
+
+	if(passFightOne == true){
+
+		passiveFight('firstFight', 100, 1, 1000);
+
+	} else if(passFightTwo == true){
+
+		passiveFight('secondFight', 500, 2, 2000);
+
+	} else if(passFightThree == true){
+
+		passiveFight('thirdFight', 2500, 3, 3000);
+
+	} else if(passFightFour == true){
+
+		passiveFight('fourthFight', 12500, 4, 4000);
+
+	} else if(passFightFive == true){
+
+		passiveFight('fifthFight', 62500, 5, 5000);
+
+	} else if(passFightSix == true){
+
+		passiveFight('sixthFight', 312500, 6, 6000);
+
+	} else if(passFightSeven == true){
+
+		passiveFight('seventhFight', 1562500, 7, 7000);
+
+	}
 
 }
 
@@ -593,7 +703,13 @@ function deleteLocalSave(){
 	setCookie("clickPerSecond", clickPerSecond, -1);
 	setCookie("clickCost", clickCost, -1);
 	setCookie("clickInterval", clickInterval, -1);
-	
+	setCookie("passFightOne", passFightOne, -1);
+	setCookie("passFightTwo", passFightTwo, -1);
+	setCookie("passFightThree", passFightThree, -1);
+	setCookie("passFightFour", passFightFour, -1);
+	setCookie("passFightFive", passFightFive, -1);
+	setCookie("passFightSix", passFightSix, -1);
+	setCookie("passFightSeven", passFightSeven, -1);
 
 }
 
@@ -625,6 +741,13 @@ function localSave(){
 	setCookie("clickPerSecond", clickPerSecond, 1000);
 	setCookie("clickCost", clickCost, 1000);
 	setCookie("clickInterval", clickInterval, 1000);
+	setCookie("passFightOne", passFightOne, 1000);
+	setCookie("passFightTwo", passFightTwo, 1000);
+	setCookie("passFightThree", passFightThree, 1000);
+	setCookie("passFightFour", passFightFour, 1000);
+	setCookie("passFightFive", passFightFive, 1000);
+	setCookie("passFightSix", passFightSix, 1000);
+	setCookie("passFightSeven", passFightSeven, 1000);
 	
 	console.log("Saved!");
 
@@ -656,6 +779,13 @@ setInterval( function() {
 	setCookie("clickPerSecond", clickPerSecond, 1000);
 	setCookie("clickCost", clickCost, 1000);
 	setCookie("clickInterval", clickInterval, 1000);
+	setCookie("passFightOne", passFightOne, 1000);
+	setCookie("passFightTwo", passFightTwo, 1000);
+	setCookie("passFightThree", passFightThree, 1000);
+	setCookie("passFightFour", passFightFour, 1000);
+	setCookie("passFightFive", passFightFive, 1000);
+	setCookie("passFightSix", passFightSix, 1000);
+	setCookie("passFightSeven", passFightSeven, 1000);
 
 
 	console.log("Saved!");
