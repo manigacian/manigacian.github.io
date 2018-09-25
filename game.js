@@ -8,10 +8,11 @@ var legacyPoints = 0;
 var totalXp = 0;
 var lastLegacyPoints = 0;
 var newLegacyPoints = 0;
-var clickPerSecond = 0;
+var clickPerInterval = 0;
 var clickCost = 10;
 var baseClickInterval = 1500;
 var clickInterval = 1000;
+var clickPerSecond;
 var passFightOne = false;
 var passFightTwo = false;
 var passFightThree = false;
@@ -19,6 +20,7 @@ var passFightFour = false;
 var passFightFive = false;
 var passFightSix = false;
 var passFightSeven = false;
+
 
 function increaseXp(currentXp, incrementAmount) {
 
@@ -45,6 +47,36 @@ function fixSave(){
 
 	if(getCookie("clickCost") >= 10){
 
+		if (passFightOne == ""){
+
+			passFightOne = "true";
+
+		} else if (passFightTwo == ""){
+
+			passFightTwo = "true";
+
+		} else if (passFightThree == ""){
+
+			passFightThree = "true";
+
+		} else if (passFightFour == ""){
+
+			passFightFour = "true";
+
+		} else if (passFightFive == ""){
+
+			passFightFive = "true";
+
+		} else if (passFightSix == ""){
+
+			passFightSix = "true";
+
+		} else if (passFightSeven == ""){
+
+			passFightSeven = "true";
+
+		}
+
 		checkCookie();
 
 	} else {
@@ -59,7 +91,7 @@ function passiveClicks(){
 
 	console.log(1);
 
-	if ((money >= clickCost)&&(clickPerSecond == 0)){
+	if ((money >= clickCost)&&(clickPerInterval == 0)){
 
 		console.log(2);
 
@@ -69,12 +101,14 @@ function passiveClicks(){
 
 		clickCost = clickCost * 2;
 
-		clickPerSecond = 1;
+		clickPerInterval = 1;
+
+		clickPerSecond = (baseClickInterval / clickPerInterval) / 1000;
 
 		document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
 
 		var tooltipAnchor = $('#passiveClickBtn');
-		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond + " cps");
+		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond.toFixed(2) + " cps");
 		tooltipAnchor.tooltip();
 
 		var clickId = setInterval(function(){
@@ -83,7 +117,7 @@ function passiveClicks(){
 
 		}, baseClickInterval)
 
-	} else if ((money >= clickCost)&&(clickPerSecond > 0)){
+	} else if ((money >= clickCost)&&(clickPerInterval > 0)){
 
 		money = money - clickCost;
 
@@ -91,15 +125,15 @@ function passiveClicks(){
 
 		clickCost = clickCost * 2;
 
-		clickPerSecond++;
+		clickPerInterval++;
 
 		var tooltipAnchor = $('#passiveClickBtn');
-		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond + " cps");
+		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond.toFixed(2) + " cps");
 		tooltipAnchor.tooltip();
 
 		document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
 
-		clickInterval = (baseClickInterval / clickPerSecond);
+		clickInterval = (baseClickInterval / clickPerInterval) / 1000;
 
 		clearInterval(clickId);
 
@@ -601,7 +635,7 @@ function loadLocalSave(){
 	document.getElementById("fifthPurchaseRow").setAttribute("style", getCookie("fifthPurchaseRow"));
 	document.getElementById("sixthPurchaseRow").setAttribute("style", getCookie("sixthPurchaseRow"));
 	document.getElementById("currentRealm").innerHTML = getCookie("currentRealm");
-	clickPerSecond = parseInt(getCookie("clickPerSecond"));
+	clickPerInterval = parseInt(getCookie("clickPerInterval"));
 	clickCost = parseInt(getCookie("clickCost"));
 	clickInterval = parseInt(getCookie("clickInterval"));
 	passFightOne = getCookie("passFightOne");
@@ -609,7 +643,7 @@ function loadLocalSave(){
 	passFightThree = getCookie("passFightThree");
 	passFightFour = getCookie("passFightFour");
 	passFightFive = getCookie("passFightFive");
-	passFightSix= getCookie("passFightSix");
+	passFightSix = getCookie("passFightSix");
 	passFightSeven = getCookie("passFightSeven");
 
 	updateValues();
@@ -623,11 +657,11 @@ function updateValues(){
 	document.getElementById("progress").setAttribute("value", xp);
 	// fixing tooltip
 	var tooltipAnchor = $('#passiveClickBtn');
-		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond + " cps");
+		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerInterval + " cps");
 		tooltipAnchor.tooltip();
 
 	document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
-	if (clickPerSecond >= 1){
+	if (clickPerInterval >= 1){
 
 		clickId = setInterval(function(){
 
@@ -643,33 +677,76 @@ function updateValues(){
 
 function passFightUpdate(){
 
-	if(passFightOne == true){
 
-		passiveFight('firstFight', 100, 1, 1000);
+	if(passFightOne == "true"){
 
-	} else if(passFightTwo == true){
+		document.getElementById("firstFightPassive").setAttribute("style", "display: none;")
 
-		passiveFight('secondFight', 500, 2, 2000);
+		setInterval(function(){
 
-	} else if(passFightThree == true){
+		Fight("firstFight");
 
-		passiveFight('thirdFight', 2500, 3, 3000);
+		}, 1000)
 
-	} else if(passFightFour == true){
+	} else if(passFightTwo == "true"){
 
-		passiveFight('fourthFight', 12500, 4, 4000);
+		document.getElementById("secondFightPassive").setAttribute("style", "display: none;")
 
-	} else if(passFightFive == true){
+		setInterval(function(){
 
-		passiveFight('fifthFight', 62500, 5, 5000);
+		Fight("secondFight");
 
-	} else if(passFightSix == true){
+		}, 2000)
 
-		passiveFight('sixthFight', 312500, 6, 6000);
+	} else if(passFightThree == "true"){
 
-	} else if(passFightSeven == true){
+		document.getElementById("thirdFightPassive").setAttribute("style", "display: none;")
 
-		passiveFight('seventhFight', 1562500, 7, 7000);
+		setInterval(function(){
+
+		Fight("thirdFight");
+
+		}, 3000)
+
+	} else if(passFightFour == "true"){
+
+		document.getElementById("fourthFightPassive").setAttribute("style", "display: none;")
+
+		setInterval(function(){
+
+		Fight("fourthFight");
+
+		}, 4000)
+
+	} else if(passFightFive == "true"){
+
+		document.getElementById("fifthFightPassive").setAttribute("style", "display: none;")
+
+		setInterval(function(){
+
+		Fight("fifthFight");
+
+		}, 5000)
+
+	} else if(passFightSix == "true"){
+
+		document.getElementById("sixthFightPassive").setAttribute("style", "display: none;")
+
+		setInterval(function(){
+
+		Fight("sixthFight");
+
+		}, 6000)
+
+	} else if(passFightSeven == "true"){
+
+		document.getElementById("seventhFightPassive").setAttribute("style", "display: none;")
+
+		setInterval(function(){
+
+		Fight("seventhFight");
+
+		}, 7000)
 
 	}
 
@@ -700,7 +777,7 @@ function deleteLocalSave(){
 	setCookie("fifthPurchaseRow", document.getElementById("fifthPurchaseRow").getAttribute("style"), -1);
 	setCookie("sixthPurchaseRow", document.getElementById("sixthPurchaseRow").getAttribute("style"), -1);
 	setCookie("currentRealm", document.getElementById("currentRealm").innerHTML, -1);
-	setCookie("clickPerSecond", clickPerSecond, -1);
+	setCookie("clickPerInterval", clickPerInterval, -1);
 	setCookie("clickCost", clickCost, -1);
 	setCookie("clickInterval", clickInterval, -1);
 	setCookie("passFightOne", passFightOne, -1);
@@ -738,7 +815,7 @@ function localSave(){
 	setCookie("fifthPurchaseRow", document.getElementById("fifthPurchaseRow").getAttribute("style"), 1000);
 	setCookie("sixthPurchaseRow", document.getElementById("sixthPurchaseRow").getAttribute("style"), 1000);
 	setCookie("currentRealm", document.getElementById("currentRealm").innerHTML, 1000);
-	setCookie("clickPerSecond", clickPerSecond, 1000);
+	setCookie("clickPerInterval", clickPerInterval, 1000);
 	setCookie("clickCost", clickCost, 1000);
 	setCookie("clickInterval", clickInterval, 1000);
 	setCookie("passFightOne", passFightOne, 1000);
@@ -776,7 +853,7 @@ setInterval( function() {
 	setCookie("fifthPurchaseRow", document.getElementById("fifthPurchaseRow").getAttribute("style"), 1000);
 	setCookie("sixthPurchaseRow", document.getElementById("sixthPurchaseRow").getAttribute("style"), 1000);
 	setCookie("currentRealm", document.getElementById("currentRealm").innerHTML, 1000);
-	setCookie("clickPerSecond", clickPerSecond, 1000);
+	setCookie("clickPerInterval", clickPerInterval, 1000);
 	setCookie("clickCost", clickCost, 1000);
 	setCookie("clickInterval", clickInterval, 1000);
 	setCookie("passFightOne", passFightOne, 1000);

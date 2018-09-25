@@ -11,7 +11,7 @@
 		<title>Xianxia Idle</title>
 
 	</head>
-	<body onload = "fixSave();">
+	<body style = "background-color: white;"onload = "fixSave();">
 
 		<script type="text/javascript" src="game.js"></script>
 		<!--Import jQuery before materialize.js-->
@@ -59,44 +59,44 @@
 
 				    <tbody>
 				    <tr>
-				    	<td><a onclick = "Fight('firstFight')" id = "firstFight" data-position = "bottom" data-tooltip = "Victory Grants 1 Spirit Stone. Power above the enemies power (0.1), is required for garaunteed victory" class="tooltipped waves-effect waves-light btn">Fight a Mortal</a><p style = "display: none;" id = "firstFightDefeat"></p></td>
+				    	<td><a onclick = "Fight('firstFight')" id = "firstFight" data-position = "bottom" data-tooltip = "Victory Grants 1 Spirit Stone. Power above the enemies power (0.1), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight a Mortal</a><p style = "display: none;" id = "firstFightDefeat"></p></td>
                         <td><a onclick = "passiveFight('firstFight', 100, 1, 1000);" id = "firstFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every second - 100 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "firstFightPower">0.1</td>
 				        <td id = "firstFightReward">1</td>
 				    </tr>
 				    <tr>
-				        <td><a onclick = "Fight('secondFight')" id = "secondFight" data-position = "bottom" data-tooltip = "Victory Grants 5 Spirit Stones. Power above the enemies power (1.0), is required for garaunteed victory" class="tooltipped waves-effect waves-light btn">Fight an arrogant young master</a><p style = "display: none;" id = "secondFightDefeat"></p></td>
+				        <td><a onclick = "Fight('secondFight')" id = "secondFight" data-position = "bottom" data-tooltip = "Victory Grants 5 Spirit Stones. Power above the enemies power (1.0), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight an arrogant young master</a><p style = "display: none;" id = "secondFightDefeat"></p></td>
                         <td><a onclick = "passiveFight('secondFight', 500, 2, 2000)" id = "secondFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every  2 seconds - 500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "secondFightPower">1.0</td>
 				        <td id = "secondFightReward">5</td>
 				    </tr>
 				    <tr>
-				        <td><a onclick = "Fight('thirdFight')" id = "thirdFight" data-position = "bottom" data-tooltip = "Victory Grants 25 Spirit Stones. Power above the enemies power (1.9), is required for garaunteed victory" class="tooltipped waves-effect waves-light btn">Fight the young master's older brother</a><p style = "display: none;" id = "thirdFightDefeat"></p></td>
+				        <td><a onclick = "Fight('thirdFight')" id = "thirdFight" data-position = "bottom" data-tooltip = "Victory Grants 25 Spirit Stones. Power above the enemies power (1.9), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the young master's older brother</a><p style = "display: none;" id = "thirdFightDefeat"></p></td>
                         <td><a onclick = "passiveFight('thirdFight', 2500, 3, 3000)" id = "thirdFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 3 seconds - 2500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "thirdFightPower">1.9</td>
 				        <td id = "thirdFightReward">25</td>
 				    </tr>
 				    <tr>
-				        <td><a onclick = "Fight('fourthFight')" id = "fourthFight" data-position = "bottom" data-tooltip = "Victory Grants 125 Spirit Stones. Power above the enemies power (3.0), is required for garaunteed victory" class="tooltipped waves-effect waves-light btn">Fight the young master's elder</a><p style = "display: none;" id = "fourthFightDefeat"></p></td>
+				        <td><a onclick = "Fight('fourthFight')" id = "fourthFight" data-position = "bottom" data-tooltip = "Victory Grants 125 Spirit Stones. Power above the enemies power (3.0), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the young master's elder</a><p style = "display: none;" id = "fourthFightDefeat"></p></td>
                         <td><a onclick = "passiveFight('fourthFight', 12500, 4, 4000)" id = "fourthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 4 seconds - 12500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "fourthFightPower">3.0</td>
 				        <td id = "fourthFightReward">125</td>
 				    </tr>
 				    <tr>
-				        <td><a onclick = "Fight('fifthFight')" id = "fifthFight" data-position = "bottom" data-tooltip = "Victory Grants 625 Spirit Stones. Power above the enemies power (4.3), is required for garaunteed victory" class="tooltipped waves-effect waves-light btn">Fight the young master's Ancestor</a><p style = "display: none;" id = "fifthFightDefeat"></p></td>
+				        <td><a onclick = "Fight('fifthFight')" id = "fifthFight" data-position = "bottom" data-tooltip = "Victory Grants 625 Spirit Stones. Power above the enemies power (4.3), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the young master's Ancestor</a><p style = "display: none;" id = "fifthFightDefeat"></p></td>
                         <td><a onclick = "passiveFight('fifthFight', 62500, 5, 5000)" id = "fifthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 5 seconds - 62500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "fifthFightPower">4.3</td>
 				        <td id = "fifthFightReward">625</td>
 				    </tr>
                     <tr>
-                        <td><a onclick = "Fight('sixthFight')" id = "sixthFight" data-position = "bottom" data-tooltip = "Victory Grants 3125 Spirit Stones. Power above the enemies power (5.8), is required for garaunteed victory" class="tooltipped waves-effect waves-light btn">Fight the sect's leader</a><p style = "display: none;" id = "sixthFightDefeat"></p></td>
-                        <td><a onclick = "passiveFight('sixthFight', 312500, 6, 6000)" id = "sixthFightPassive" data-position = "bottom" data-tooltip = "uto Fight: Does this fight automatically, once every 6 seconds - 312500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                        <td><a onclick = "Fight('sixthFight')" id = "sixthFight" data-position = "bottom" data-tooltip = "Victory Grants 3125 Spirit Stones. Power above the enemies power (5.8), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the sect's leader</a><p style = "display: none;" id = "sixthFightDefeat"></p></td>
+                        <td><a onclick = "passiveFight('sixthFight', 312500, 6, 6000)" id = "sixthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 6 seconds - 312500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
                         <td id = "sixthFightPower">5.8</td>
                         <td id = "sixthFightReward">3125</td>
                     </tr>
                     <tr>
-                        <td><a onclick = "Fight('seventhFight')" id = "seventhFight" data-position = "bottom" data-tooltip = "Victory Grants 15625 Spirit Stones. Power above the enemies power (7.5), is required for garaunteed victory" class="tooltipped waves-effect waves-light btn">Fight the whole sect at once</a><p style = "display: none;" id = "seventhFightDefeat"></p></td>
-                        <td><a onclick = "passiveFight('seventhFight', 1562500, 7, 7000)" id = "seventhFightPassive" data-position = "bottom" data-tooltip = "uto Fight: Does this fight automatically, once every 7 seconds - 1562500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                        <td><a onclick = "Fight('seventhFight')" id = "seventhFight" data-position = "bottom" data-tooltip = "Victory Grants 15625 Spirit Stones. Power above the enemies power (7.5), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the whole sect at once</a><p style = "display: none;" id = "seventhFightDefeat"></p></td>
+                        <td><a onclick = "passiveFight('seventhFight', 1562500, 7, 7000)" id = "seventhFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 7 seconds - 1562500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
                         <td id = "seventhFightPower">7.5</td>
                         <td id = "seventhFightReward">15625</td>
                     </tr>
