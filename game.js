@@ -51,27 +51,33 @@ function fixSave(){
 
 			passFightOne = "true";
 
-		} else if (passFightTwo == ""){
+		}
+		if (passFightTwo == ""){
 
 			passFightTwo = "true";
 
-		} else if (passFightThree == ""){
+		}
+		if (passFightThree == ""){
 
 			passFightThree = "true";
 
-		} else if (passFightFour == ""){
+		}
+		if (passFightFour == ""){
 
 			passFightFour = "true";
 
-		} else if (passFightFive == ""){
+		}
+		if (passFightFive == ""){
 
 			passFightFive = "true";
 
-		} else if (passFightSix == ""){
+		}
+		if (passFightSix == ""){
 
 			passFightSix = "true";
 
-		} else if (passFightSeven == ""){
+		}
+		if (passFightSeven == ""){
 
 			passFightSeven = "true";
 
