@@ -35,6 +35,8 @@ function increaseXp(currentXp, incrementAmount) {
 
 	document.getElementById("xp").innerHTML = "Xp: " + currentXp.toFixed(3);
 
+	doAllWinChance();
+
 	if (isAtMax(currentXp, document.getElementById("progress").getAttribute("max")) == true) {
 
 		document.getElementById("rankupButton").setAttribute("style","display: block;");
@@ -293,6 +295,60 @@ function imageChange(){
 	}
 
 }
+ 
+function doAllWinChance(){
+
+	getFightWinChance("firstFight");
+	getFightWinChance("secondFight");
+	getFightWinChance("thirdFight");
+	getFightWinChance("fourthFight");
+	getFightWinChance("fifthFight");
+	getFightWinChance("sixthFight");
+	getFightWinChance("seventhFight");
+
+}
+
+function getFightWinChance(fightId){
+
+	var powerName = fightId + "Power";
+	var rewardName = fightId + "Reward";
+
+	var fightPower = document.getElementById(powerName).innerHTML;
+	var fightReward = parseInt(document.getElementById(rewardName).innerHTML);
+
+	if (power > fightPower){
+
+		var tooltipAnchor = $('#' + fightId);
+		tooltipAnchor.attr('data-tooltip', "Victory grants " + fightReward + " Spirit Stone(s). You currently have a 100% chance of victory");
+		tooltipAnchor.tooltip();
+
+	} else if (power >= (fightPower * 0.95)){
+
+		var tooltipAnchor = $('#'+ fightId);
+		tooltipAnchor.attr('data-tooltip', "Victory grants " + fightReward + " Spirit Stone(s). You currently have a ~73% chance of victory");
+		tooltipAnchor.tooltip();
+
+	} else if (power >= (fightPower * 0.90)){
+
+		var tooltipAnchor = $('#'+fightId);
+		tooltipAnchor.attr('data-tooltip', "Victory grants " + fightReward + " Spirit Stone(s). You currently have a ~45% chance of victory");
+		tooltipAnchor.tooltip();
+
+	} else if (power >= (fightPower * 0.85)){
+
+		var tooltipAnchor = $('#' + fightId);
+		tooltipAnchor.attr('data-tooltip', "Victory grants " + fightReward + " Spirit Stone(s). You currently have a ~18% chance of victory");
+		tooltipAnchor.tooltip();
+
+	} else {
+
+		var tooltipAnchor = $('#' + fightId);
+		tooltipAnchor.attr('data-tooltip', "Victory grants " + fightReward + " Spirit Stone(s). You currently have a 0% chance of victory");
+		tooltipAnchor.tooltip();
+
+	}
+
+}
 
 function Fight(fightId){
 
@@ -313,7 +369,28 @@ function Fight(fightId){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-	} else if (power >= (fightPower * 0.85)) {
+	} else if (power >= (fightPower * 0.95)) {
+
+		if (Math.floor(Math.random() * 11) > 3) {
+
+			fightDefeat = "";
+			document.getElementById(defeatName).innerHTML = fightDefeat;
+
+			money = money + fightReward;
+
+			document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+
+		} else {
+
+			console.log("defeat");
+
+			document.getElementById(defeatName).setAttribute("style", "display: inline;");
+			fightDefeat = " You've been defeated!";
+			document.getElementById(defeatName).innerHTML = fightDefeat;
+
+		}
+
+	} else if (power >= (fightPower * 0.90)){
 
 		if (Math.floor(Math.random() * 11) > 6) {
 
@@ -334,6 +411,27 @@ function Fight(fightId){
 
 		}
 
+	} else if (power >= (fightPower * 0.85)){
+
+		if (Math.floor(Math.random() * 11) > 9) {
+
+			fightDefeat = "";
+			document.getElementById(defeatName).innerHTML = fightDefeat;
+
+			money = money + fightReward;
+
+			document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+
+		} else {
+
+			console.log("defeat");
+
+			document.getElementById(defeatName).setAttribute("style", "display: inline;");
+			fightDefeat = " You've been defeated!";
+			document.getElementById(defeatName).innerHTML = fightDefeat;
+
+		}
+		
 	} else {
 
 		console.log("defeat");
@@ -667,6 +765,7 @@ function updateValues(){
 		tooltipAnchor.tooltip();
 
 	document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
+
 	if (clickPerInterval >= 1){
 
 		clickId = setInterval(function(){
@@ -678,6 +777,8 @@ function updateValues(){
 	}
 
 	passFightUpdate();
+
+	doAllWinChance();
 
 }
 
