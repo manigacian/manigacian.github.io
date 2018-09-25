@@ -11,7 +11,7 @@ var newLegacyPoints = 0;
 var clickPerInterval = 0;
 var clickCost = 10;
 var baseClickInterval = 1500;
-var clickInterval = 1000;
+var clickInterval = 1500;
 var clickPerSecond;
 var passFightOne = false;
 var passFightTwo = false;
@@ -87,6 +87,14 @@ function fixSave(){
 		if (clickPerInterval == NaN){
 
 			clickPerInterval = 0;
+			clickCost = 10;
+			clickInterval = 1500;
+
+			var tooltipAnchor = $('#passiveClickBtn');
+			tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond.toFixed(2) + " cps");
+			tooltipAnchor.tooltip();
+
+			document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
 
 		}
 
