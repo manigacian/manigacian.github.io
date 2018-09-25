@@ -84,6 +84,11 @@ function fixSave(){
 			passFightSeven = "true";
 
 		}
+		if (clickPerInterval == NaN){
+
+			clickPerInterval = 0;
+
+		}
 
 		checkCookie();
 
@@ -111,7 +116,7 @@ function passiveClicks(){
 
 		clickPerInterval = 1;
 
-		clickPerSecond = (baseClickInterval / clickPerInterval) / 1000;
+		clickPerSecond = (clickPerInterval / (baseClickInterval / 1000));
 
 		document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
 
@@ -127,6 +132,8 @@ function passiveClicks(){
 
 	} else if ((money >= clickCost)&&(clickPerInterval > 0)){
 
+		console.log(3);
+
 		money = money - clickCost;
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
@@ -134,6 +141,7 @@ function passiveClicks(){
 		clickCost = clickCost * 2;
 
 		clickPerInterval++;
+		clickPerSecond = (clickPerInterval / (baseClickInterval / 1000));
 
 		var tooltipAnchor = $('#passiveClickBtn');
 		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond.toFixed(2) + " cps");
@@ -141,7 +149,7 @@ function passiveClicks(){
 
 		document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
 
-		clickInterval = (baseClickInterval / clickPerInterval) / 1000;
+		clickInterval = (baseClickInterval / clickPerInterval);
 
 		clearInterval(clickId);
 
