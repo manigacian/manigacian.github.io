@@ -694,7 +694,8 @@ function passFightUpdate(){
 
 		}, 1000)
 
-	} else if(passFightTwo == "true"){
+	}
+	if(passFightTwo == "true"){
 
 		document.getElementById("secondFightPassive").setAttribute("style", "display: none;")
 
@@ -704,7 +705,8 @@ function passFightUpdate(){
 
 		}, 2000)
 
-	} else if(passFightThree == "true"){
+	}
+	if(passFightThree == "true"){
 
 		document.getElementById("thirdFightPassive").setAttribute("style", "display: none;")
 
@@ -714,7 +716,8 @@ function passFightUpdate(){
 
 		}, 3000)
 
-	} else if(passFightFour == "true"){
+	}
+	if(passFightFour == "true"){
 
 		document.getElementById("fourthFightPassive").setAttribute("style", "display: none;")
 
@@ -724,7 +727,8 @@ function passFightUpdate(){
 
 		}, 4000)
 
-	} else if(passFightFive == "true"){
+	}
+	if(passFightFive == "true"){
 
 		document.getElementById("fifthFightPassive").setAttribute("style", "display: none;")
 
@@ -734,7 +738,8 @@ function passFightUpdate(){
 
 		}, 5000)
 
-	} else if(passFightSix == "true"){
+	}
+	if(passFightSix == "true"){
 
 		document.getElementById("sixthFightPassive").setAttribute("style", "display: none;")
 
@@ -744,7 +749,8 @@ function passFightUpdate(){
 
 		}, 6000)
 
-	} else if(passFightSeven == "true"){
+	}
+	if(passFightSeven == "true"){
 
 		document.getElementById("seventhFightPassive").setAttribute("style", "display: none;")
 
