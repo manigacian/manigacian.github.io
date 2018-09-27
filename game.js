@@ -35,7 +35,7 @@ function increaseXp(currentXp, incrementAmount) {
 
 	document.getElementById("xp").innerHTML = "Xp: " + currentXp.toFixed(3);
 
-	doAllWinChance();
+	//doAllWinChance();
 
 	if (isAtMax(currentXp, document.getElementById("progress").getAttribute("max")) == true) {
 
@@ -794,7 +794,7 @@ function updateValues(){
 
 	passFightUpdate();
 
-	doAllWinChance();
+	//doAllWinChance();
 
 }
 
