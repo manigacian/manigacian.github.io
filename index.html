@@ -11,7 +11,7 @@
 		<title>Xianxia Idle</title>
 
 	</head>
-	<body style = "background-color: white;" onload = "fixSave();">
+	<body style = "background-color: white;" onload = "checkCookie();">
 
 		<script type="text/javascript" src="game.js"></script>
 		<!--Import jQuery before materialize.js-->
@@ -22,7 +22,7 @@
 
             <progress id = "progress" style = "width:100%" value="0" max="1"></progress>
 
-			<h4 style = "text-align: center;" id = "currentRealm">Mortal</h4> 
+			<h4 style = "text-align: center;" id = "currentRealm">Mortal</h4>
 
             <a onclick = "rankup()" id = "rankupButton" class="waves-effect waves-light btn" style = "display: none;">Rankup</a>
 
@@ -30,7 +30,7 @@
             <h6 style = "text-align: center;" id = "xp">XP: 0</h6>
             <h6 style = "text-align: center;" id = "money">Spirit Stones: 0</h6>
 
-			<input onclick = "increaseXp(xp, incrementAmount)" style = "width: 75%; display: block; margin-left: auto; margin-right: auto; outline: none;" type = "image" src = "Assets/monk/transparent/monktransparent.png" id = "meditiate"></input>
+			<img onclick = "increaseXp(xp, incrementAmount)" style = "width: 75%; display: block; margin-left: auto; margin-right: auto; outline: none;" type = "image" src = "Assets/monk/transparent/monktransparent.png" id = "meditate"></img>
 
             <a onclick="passiveClicks()" id = "passiveClickBtn" style = "width: 100%" data-position = "bottom" data-tooltip = "Gain passive clicks per second - cost: 10 spirit stones, current: 0 cps" class = "tooltipped waves-effect waves-light btn">Secluded Meditation - 10 S.S.</a>
 
@@ -51,7 +51,7 @@
         			<thead>
           				<tr>
 				              <th>Fight</th>
-                              <th>+</th>
+                      <th>+</th>
 				              <th>Enemy Power Level</th>
 				              <th>Reward (S.S.)</th>
 				        </tr>
@@ -60,49 +60,73 @@
 				    <tbody>
 				    <tr>
 				    	<td><a onclick = "Fight('firstFight')" id = "firstFight" data-position = "bottom" data-tooltip = "Victory Grants 1 Spirit Stone. Power above the enemies power (0.1), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight a Mortal</a><p style = "display: none;" id = "firstFightDefeat"></p></td>
-                        <td><a onclick = "passiveFight('firstFight', 100, 1, 1000);" id = "firstFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every second - 100 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                        <td><a onclick = "passiveFightOne();" id = "firstFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every second (per upgrade) - 10 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "firstFightPower">0.1</td>
 				        <td id = "firstFightReward">1</td>
 				    </tr>
 				    <tr>
 				        <td><a onclick = "Fight('secondFight')" id = "secondFight" data-position = "bottom" data-tooltip = "Victory Grants 5 Spirit Stones. Power above the enemies power (1.0), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight an arrogant young master</a><p style = "display: none;" id = "secondFightDefeat"></p></td>
-                        <td><a onclick = "passiveFight('secondFight', 500, 2, 2000)" id = "secondFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every  2 seconds - 500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                        <td><a onclick = "passiveFightTwo();" id = "secondFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every  2 seconds (per upgrade) - 50 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "secondFightPower">1.0</td>
 				        <td id = "secondFightReward">5</td>
 				    </tr>
 				    <tr>
 				        <td><a onclick = "Fight('thirdFight')" id = "thirdFight" data-position = "bottom" data-tooltip = "Victory Grants 25 Spirit Stones. Power above the enemies power (1.9), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the young master's older brother</a><p style = "display: none;" id = "thirdFightDefeat"></p></td>
-                        <td><a onclick = "passiveFight('thirdFight', 2500, 3, 3000)" id = "thirdFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 3 seconds - 2500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                        <td><a onclick = "passiveFightThree();" id = "thirdFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 3 seconds (per upgrade) - 250 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "thirdFightPower">1.9</td>
 				        <td id = "thirdFightReward">25</td>
 				    </tr>
 				    <tr>
 				        <td><a onclick = "Fight('fourthFight')" id = "fourthFight" data-position = "bottom" data-tooltip = "Victory Grants 125 Spirit Stones. Power above the enemies power (3.0), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the young master's elder</a><p style = "display: none;" id = "fourthFightDefeat"></p></td>
-                        <td><a onclick = "passiveFight('fourthFight', 12500, 4, 4000)" id = "fourthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 4 seconds - 12500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                        <td><a onclick = "passiveFightFour();" id = "fourthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 4 seconds (per upgrade) - 1250 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "fourthFightPower">3.0</td>
 				        <td id = "fourthFightReward">125</td>
 				    </tr>
 				    <tr>
 				        <td><a onclick = "Fight('fifthFight')" id = "fifthFight" data-position = "bottom" data-tooltip = "Victory Grants 625 Spirit Stones. Power above the enemies power (4.3), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the young master's Ancestor</a><p style = "display: none;" id = "fifthFightDefeat"></p></td>
-                        <td><a onclick = "passiveFight('fifthFight', 62500, 5, 5000)" id = "fifthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 5 seconds - 62500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                        <td><a onclick = "passiveFightFive();" id = "fifthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 5 seconds (per upgrade) - 6250 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
 				        <td id = "fifthFightPower">4.3</td>
 				        <td id = "fifthFightReward">625</td>
 				    </tr>
-                    <tr>
-                        <td><a onclick = "Fight('sixthFight')" id = "sixthFight" data-position = "bottom" data-tooltip = "Victory Grants 3125 Spirit Stones. Power above the enemies power (5.8), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the sect's leader</a><p style = "display: none;" id = "sixthFightDefeat"></p></td>
-                        <td><a onclick = "passiveFight('sixthFight', 312500, 6, 6000)" id = "sixthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 6 seconds - 312500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
-                        <td id = "sixthFightPower">5.8</td>
-                        <td id = "sixthFightReward">3125</td>
-                    </tr>
-                    <tr>
-                        <td><a onclick = "Fight('seventhFight')" id = "seventhFight" data-position = "bottom" data-tooltip = "Victory Grants 15625 Spirit Stones. Power above the enemies power (7.5), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the whole sect at once</a><p style = "display: none;" id = "seventhFightDefeat"></p></td>
-                        <td><a onclick = "passiveFight('seventhFight', 1562500, 7, 7000)" id = "seventhFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 7 seconds - 1562500 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
-                        <td id = "seventhFightPower">7.5</td>
-                        <td id = "seventhFightReward">15625</td>
-                    </tr>
+            <tr>
+                <td><a onclick = "Fight('sixthFight')" id = "sixthFight" data-position = "bottom" data-tooltip = "Victory Grants 3125 Spirit Stones. Power above the enemies power (6.0), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the sect's leader</a><p style = "display: none;" id = "sixthFightDefeat"></p></td>
+                <td><a onclick = "passiveFightSix();" id = "sixthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 6 seconds (per upgrade) - 31250 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                <td id = "sixthFightPower">6.3</td>
+                <td id = "sixthFightReward">3125</td>
+            </tr>
+            <tr>
+                <td><a onclick = "Fight('seventhFight')" id = "seventhFight" data-position = "bottom" data-tooltip = "Victory Grants 15625 Spirit Stones. Power above the enemies power (8.0), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the whole sect at once</a><p style = "display: none;" id = "seventhFightDefeat"></p></td>
+                <td><a onclick = "passiveFightSeven();" id = "seventhFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 7 seconds (per upgrade) - 156250 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                <td id = "seventhFightPower">8.0</td>
+                <td id = "seventhFightReward">15625</td>
+            </tr>
+						<tr id = "eighthFightRow" style = "display: none;">
+                <td><a onclick = "Fight('eighthFight')" id = "eighthFight" data-position = "bottom" data-tooltip = "Victory Grants 78125 Spirit Stones. Power above the enemies power (10.0), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight a fellow monk</a><p style = "display: none;" id = "eighthFightDefeat"></p></td>
+                <td><a onclick = "passiveFightEight();" id = "eighthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 8 seconds (per upgrade) - 781250 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                <td id = "eighthFightPower">10.0</td>
+                <td id = "eighthFightReward">78125</td>
+            </tr>
+						<tr id = "ninthFightRow" style = "display: none;">
+                <td><a onclick = "Fight('ninthFight')" id = "ninthFight" data-position = "bottom" data-tooltip = "Victory Grants 390625 Spirit Stones. Power above the enemies power (12.3), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight your ancient master</a><p style = "display: none;" id = "ninthFightDefeat"></p></td>
+                <td><a onclick = "passiveFightNine();" id = "ninthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 9 seconds (per upgrade) - 3906250 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                <td id = "ninthFightPower">12.3</td>
+                <td id = "ninthFightReward">390625</td>
+            </tr>
+						<tr id = "tenthFightRow" style = "display: none;">
+                <td><a onclick = "Fight('tenthFight')" id = "tenthFight" data-position = "bottom" data-tooltip = "Victory Grants 1953125 Spirit Stones. Power above the enemies power (14.9), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight your grandmaster</a><p style = "display: none;" id = "tenthFightDefeat"></p></td>
+                <td><a onclick = "passiveFightTen();" id = "tenthFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 10 seconds (per upgrade) - 19531250 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                <td id = "tenthFightPower">14.9</td>
+                <td id = "tenthFightReward">1953125</td>
+            </tr>
+						<tr id = "eleventhFightRow" style = "display: none;">
+                <td><a onclick = "Fight('eleventhFight')" id = "eleventhFight" data-position = "bottom" data-tooltip = "Victory Grants 9765625 Spirit Stones. Power above the enemies power (17.8), is required for guaranteed victory" class="tooltipped waves-effect waves-light btn">Fight the murderer of your family</a><p style = "display: none;" id = "eleventhFightDefeat"></p></td>
+                <td><a onclick = "passiveFightEleven();" id = "eleventhFightPassive" data-position = "bottom" data-tooltip = "Auto Fight: Does this fight automatically, once every 11 seconds (per upgrade) - 97656250 S.S." class = "tooltipped waves-effect waves-light btn">+</a></td>
+                <td id = "eleventhFightPower">17.8</td>
+                <td id = "eleventhFightReward">9765625</td>
+            </tr>
 				    </tbody>
 				</table>
-                
+
 
      		 </div>
 
@@ -114,7 +138,7 @@
 
      		 			<th>Training</th>
      		 			<th>Cost</th>
-     		 			<th>Click Power Increase</th>
+     		 			<th class = "tooltipped" data-position = "bottom" data-tooltip = "This is a base click power boost, any boost from legacy is applied on top of this.">Base Click Power Increase</th>
 
      		 		</thead>
 
@@ -160,21 +184,53 @@
 
      		 			</tr>
 
-                        <tr>
+              <tr>
 
-                            <td><a onclick = "Train('sixthTrain')" id = "sixthTrain" class="waves-effect waves-light btn">Gain enlightenment from a dying star</a></td>
-                            <td id = "sixthTrainCost">100000</td>
-                            <td id = "sixthTrainReward">0.243</td>
+                <td><a onclick = "Train('sixthTrain')" id = "sixthTrain" class="waves-effect waves-light btn">Gain enlightenment from a dying star</a></td>
+                <td id = "sixthTrainCost">100000</td>
+                <td id = "sixthTrainReward">0.243</td>
 
-                        </tr>
+              </tr>
 
-                        <tr>
+              <tr>
 
-                            <td><a onclick = "Train('seventhTrain')" id = "seventhTrain" class="waves-effect waves-light btn">Massacre enemies to strengthen dao heart</a></td>
-                            <td id = "seventhTrainCost">1000000</td>
-                            <td id = "seventhTrainReward">0.729</td>
+                <td><a onclick = "Train('seventhTrain')" id = "seventhTrain" class="waves-effect waves-light btn">Massacre enemies to strengthen dao heart</a></td>
+                <td id = "seventhTrainCost">1000000</td>
+                <td id = "seventhTrainReward">0.729</td>
 
-                        </tr>
+              </tr>
+
+							<tr id = "eighthTrainRow" style = "display: none;">
+
+                <td><a onclick = "Train('eighthTrain')" id = "eighthTrain" class="waves-effect waves-light btn">Embrace the void</a></td>
+                <td id = "eighthTrainCost">10000000</td>
+                <td id = "eighthTrainReward">2.187</td>
+
+              </tr>
+
+							<tr id = "ninthTrainRow" style = "display: none;">
+
+                <td><a onclick = "Train('ninthTrain')" id = "ninthTrain" class="waves-effect waves-light btn">Comprehend the mysteries of space</a></td>
+                <td id = "ninthTrainCost">100000000</td>
+                <td id = "ninthTrainReward">6.561</td>
+
+              </tr>
+
+							<tr id = "tenthTrainRow" style = "display: none;">
+
+                <td><a onclick = "Train('tenthTrain')" id = "tenthTrain" class="waves-effect waves-light btn">Become one with time</a></td>
+                <td id = "tenthTrainCost">1000000000</td>
+                <td id = "tenthTrainReward">19.683</td>
+
+              </tr>
+
+							<tr id = "eleventhTrainRow" style = "display: none;">
+
+                <td><a onclick = "Train('eleventhTrain')" id = "eleventhTrain" class="waves-effect waves-light btn">Comprehend the mysteries of time</a></td>
+                <td id = "eleventhTrainCost">10000000000</td>
+                <td id = "eleventhTrainReward">59.049</td>
+
+              </tr>
 
      		 		</tbody>
 
@@ -240,7 +296,79 @@
 
      		 				<td><a onclick = "secondCultivationPurchase()" id = "sixthPurchase" class="waves-effect waves-light btn">Intermediate Cultivation Manual</a></td>
      		 				<td id = "sixthPurchaseCost">75000</td>
-     		 				<td id = "sixthPurchaseUse">0.2 extra power every future rankup</td>
+     		 				<td id = "sixthPurchaseUse">0.1 extra power every future rankup</td>
+
+     		 			</tr>
+
+							<tr style = "display: none;" id = "seventhPurchaseRow">
+
+     		 				<td><a onclick = "thirdSwordPurchase()" id = "seventhPurchase" class="waves-effect waves-light btn">High grade Holy Sword</a></td>
+     		 				<td id = "seventhPurchaseCost">1000000</td>
+     		 				<td id = "seventhPurchaseUse">Increase Power by 0.15</td>
+
+     		 			</tr>
+
+     		 			<tr style = "display: none;" id = "eighthPurchaseRow">
+
+     		 				<td><a onclick = "thirdManualPurchase()" id = "eighthPurchase" class="waves-effect waves-light btn">Advanced Sword Manual</a></td>
+     		 				<td id = "eighthPurchaseCost">5000000</td>
+     		 				<td id = "eighthPurchaseUse">Increase Power by 0.15</td>
+
+     		 			</tr>
+
+     		 			<tr style = "display: none;" id = "ninthPurchaseRow">
+
+     		 				<td><a onclick = "thirdCultivationPurchase()" id = "ninthPurchase" class="waves-effect waves-light btn">Advanced Cultivation Manual</a></td>
+     		 				<td id = "ninthPurchaseCost">7500000</td>
+     		 				<td id = "ninthPurchaseUse">0.1 extra power every future rankup</td>
+
+     		 			</tr>
+
+							<tr style = "display: none;" id = "tenthPurchaseRow">
+
+     		 				<td><a onclick = "fourthSwordPurchase()" id = "tenthPurchase" class="waves-effect waves-light btn">Supreme grade Holy Sword</a></td>
+     		 				<td id = "tenthPurchaseCost">100000000</td>
+     		 				<td id = "tenthPurchaseUse">Increase Power by 0.15</td>
+
+     		 			</tr>
+
+     		 			<tr style = "display: none;" id = "eleventhPurchaseRow">
+
+     		 				<td><a onclick = "fourthManualPurchase()" id = "eleventhPurchase" class="waves-effect waves-light btn">Supreme Sword Manual</a></td>
+     		 				<td id = "eleventhPurchaseCost">500000000</td>
+     		 				<td id = "eleventhPurchaseUse">Increase Power by 0.15</td>
+
+     		 			</tr>
+
+     		 			<tr style = "display: none;" id = "twelfthPurchaseRow">
+
+     		 				<td><a onclick = "fourthCultivationPurchase()" id = "twelfthPurchase" class="waves-effect waves-light btn">Supreme Cultivation Manual</a></td>
+     		 				<td id = "twelfthPurchaseCost">750000000</td>
+     		 				<td id = "twelfthPurchaseUse">0.1 extra power every future rankup</td>
+
+     		 			</tr>
+
+							<tr style = "display: none;" id = "thirteenthPurchaseRow">
+
+     		 				<td><a onclick = "fifthSwordPurchase()" id = "thirteenthPurchase" class="waves-effect waves-light btn">Ultimate grade Holy Sword</a></td>
+     		 				<td id = "thirteenthPurchaseCost">10000000000</td>
+     		 				<td id = "thirteenthPurchaseUse">Increase Power by 0.15</td>
+
+     		 			</tr>
+
+     		 			<tr style = "display: none;" id = "fourteenthPurchaseRow">
+
+     		 				<td><a onclick = "fifthManualPurchase()" id = "fourteenthPurchase" class="waves-effect waves-light btn">Ultimate Sword Manual</a></td>
+     		 				<td id = "fourteenthPurchaseCost">50000000000</td>
+     		 				<td id = "fourteenthPurchaseUse">Increase Power by 0.15</td>
+
+     		 			</tr>
+
+     		 			<tr style = "display: none;" id = "fifteenthPurchaseRow">
+
+     		 				<td><a onclick = "fifthCultivationPurchase()" id = "fifteenthPurchase" class="waves-effect waves-light btn">Ultimate Cultivation Manual</a></td>
+     		 				<td id = "fifteenthPurchaseCost">75000000000</td>
+     		 				<td id = "fifteenthPurchaseUse">0.1 extra power every future rankup</td>
 
      		 			</tr>
 
@@ -251,7 +379,178 @@
      		 </div>
              <div id = "legacy">
 
-                <h3>Legacy coming soon!</h3>
+							 <h4 style = "text-align: center;" id = "legacyRequirement">Reach Late Xiantian Stage to Unlock Legacy!</h4>
+
+							 <h4 style = "text-align: center; display: none;" data-position = "bottom" data-tooltip = "Each legacy point grants a 1% boost to xp generation. Spent Legacy Points do not grant this boost. Legacy upgrades are permanent and last through legacies" class = "tooltipped" id = "legacyPoints">Legacy Points: 0</h4>
+
+							 <h5 style = "text-align: center; display: none;" id = "newLegacyPoints">Legacy Points (Gained Upon Reset): 0</h4>
+
+							 <a onclick="legacy()" id = "legacyStartBtn" style = "width: 100%; display: none;" data-position = "bottom" data-tooltip = "Leave a Legacy for the next generation, gaining legacy points, but losing all other progress" class = "tooltipped waves-effect waves-light btn">Leave a legacy</a>
+
+							 <table style = "display: none;" id = "legacyTable">
+
+									 <thead>
+
+											 <th>Legacy</th>
+											 <th>Cost (L.P.)</th>
+
+									 </thead>
+
+									 <tbody>
+
+											 <tr id = "firstLegacyRow">
+
+													 <td><a onclick = "legacyAutoFightOnePurchase()" id = "firstAutoFightLegacy" class="waves-effect waves-light btn">Gain the ability to purchase two extra Auto Fight upgrades</a></td>
+													 <td id = "firstAutoFightLegacyCost">50</td>
+
+											 </tr>
+											 <tr id = "secondLegacyRow">
+
+													 <td><a onclick = "legacySwordPermOnePurchase()" id = "firstSwordPerm" class="waves-effect waves-light btn">Start with a Basic Sword</a></td>
+													 <td id = "firstSwordPermCost">250</td>
+
+											 </tr>
+											 <tr id = "thirdLegacyRow">
+
+													 <td><a onclick = "legacyManualPermOnePurchase()" id = "firstManualPerm" class="waves-effect waves-light btn">Start with a Basic Sword Manual</a></td>
+													 <td id = "firstManualPermCost">500</td>
+
+											 </tr>
+											 <tr id = "fourthLegacyRow">
+
+													 <td><a onclick = "legacyCultivationPermOnePurchase()" id = "firstCultivationPerm" class="waves-effect waves-light btn">Start with a Basic Culivation Manual</a></td>
+													 <td id = "firstCultivationPermCost">1000</td>
+
+											 </tr>
+											 <tr id = "fifthLegacyRow">
+
+													 <td><a onclick = "legacyShopOnePurchase()" id = "firstLegacyExtraShop" class="waves-effect waves-light btn">Unlock 3 more shop purchases</a></td>
+													 <td id = "firstLegacyExtraShopCost">10000</td>
+
+											 </tr>
+											 <tr id = "sixthLegacyRow">
+
+													 <td><a onclick = "legacyAutoFightTwoPurchase()" id = "secondAutoFightLegacy" class="waves-effect waves-light btn">Gain the ability to purchase two extra Auto Fight upgrades</a></td>
+													 <td id = "secondAutoFightLegacyCost">50000</td>
+
+											 </tr>
+											 <tr id = "seventhLegacyRow">
+
+													 <td><a onclick = "legacySwordPermTwoPurchase()" id = "secondSwordPerm" class="waves-effect waves-light btn">Start with a Low Grade Holy Sword</a></td>
+													 <td id = "secondSwordPermCost">100000</td>
+
+											 </tr>
+											 <tr id = "eighthLegacyRow">
+
+													 <td><a onclick = "legacyManualPermTwoPurchase()" id = "secondManualPerm" class="waves-effect waves-light btn">Start with an Intermediate Sword Manual</a></td>
+													 <td id = "secondManualPermCost">250000</td>
+
+											 </tr>
+											 <tr id = "ninthLegacyRow">
+
+													 <td><a onclick = "legacyCultivationPermTwoPurchase()" id = "secondCultivationPerm" class="waves-effect waves-light btn">Start with an Intermediate Cultivation Technique</a></td>
+													 <td id = "secondCultivationPermCost">500000</td>
+
+											 </tr>
+											 <tr id = "tenthLegacyRow">
+
+													 <td><a onclick = "legacyExtraFightOnePurchase()" id = "firstLegacyExtraFight" class="waves-effect waves-light btn">Unlock 2 more fights</a></td>
+													 <td id = "firstLegacyExtraFightCost">1000000</td>
+
+											 </tr>
+											 <tr id = "eleventhLegacyRow">
+
+													 <td><a onclick = "legacyExtraTrainOnePurchase()" id = "firstLegacyExtraTrain" class="waves-effect waves-light btn">Unlock 2 more trainings</a></td>
+													 <td id = "firstLegacyExtraTrainCost">1000000</td>
+
+											 </tr>
+											 <tr id = "twelfthLegacyRow">
+
+													 <td><a onclick = "legacyAutoFightThreePurchase()" id = "thirdAutoFightLegacy" class="waves-effect waves-light btn">Gain the ability to purchase two extra Auto Fight upgrades</a></td>
+													 <td id = "thirdAutoFightLegacyCost">5000000</td>
+
+											 </tr>
+											 <tr id = "thirteenthLegacyRow">
+
+													 <td><a onclick = "legacySwordPermThreePurchase()" id = "thirdSwordPerm" class="waves-effect waves-light btn">Start with a High Grade Holy Sword</a></td>
+													 <td id = "thirdSwordPermCost">10000000</td>
+
+											 </tr>
+											 <tr id = "fourteenthLegacyRow">
+
+													 <td><a onclick = "legacyManualPermThreePurchase()" id = "thirdManualPerm" class="waves-effect waves-light btn">Start with an Advanced Sword Manual</a></td>
+													 <td id = "thirdManualPermCost">25000000</td>
+
+											 </tr>
+											 <tr id = "fifteenthLegacyRow">
+
+													 <td><a onclick = "legacyCultivationPermThreePurchase()" id = "thirdCultivationPerm" class="waves-effect waves-light btn">Start with an Advanced Cultivation Technique</a></td>
+													 <td id = "thirdCultivationPermCost">50000000</td>
+
+											 </tr>
+											 <tr id = "sixteenthLegacyRow">
+
+													 <td><a onclick = "legacyShopTwoPurchase()" id = "secondLegacyExtraShop" class="waves-effect waves-light btn">Unlock 3 more shop purchases</a></td>
+													 <td id = "secondLegacyExtraShopCost">100000000</td>
+
+											 </tr>
+											 <tr id = "seventeenthLegacyRow">
+
+													 <td><a onclick = "legacyAutoFightFourPurchase()" id = "fourthAutoFightLegacy" class="waves-effect waves-light btn">Gain the ability to purchase two extra Auto Fight upgrades</a></td>
+													 <td id = "fourthAutoFightLegacyCost">500000000</td>
+
+											 </tr>
+											 <tr id = "eighteenthLegacyRow">
+
+													 <td><a onclick = "autoRankupPurchase()" id = "autoRankupLegacy" class="waves-effect waves-light btn">Automatically Rankup when able</a></td>
+													 <td id = "autoRankupCost">1000000000</td>
+
+											 </tr>
+											 <tr id = "nineteenthLegacyRow">
+
+													 <td><a onclick = "legacyExtraFightTwoPurchase()" id = "secondLegacyExtraFight" class="waves-effect waves-light btn">Unlock 2 more fights</a></td>
+													 <td id = "secondLegacyExtraFightCost">10000000000</td>
+
+											 </tr>
+											 <tr id = "twentiethLegacyRow">
+
+													 <td><a onclick = "legacyExtraTrainTwoPurchase()" id = "firstLegacyExtraTrain" class="waves-effect waves-light btn">Unlock 2 more trainings</a></td>
+													 <td id = "secondLegacyExtraTrainCost">10000000000</td>
+
+											 </tr>
+											 <tr id = "twentyfirstLegacyRow">
+
+													 <td><a onclick = "legacyAutoFightFivePurchase()" id = "fifthAutoFightLegacy" class="waves-effect waves-light btn">Gain the ability to purchase two extra Auto Fight upgrades</a></td>
+													 <td id = "fifthAutoFightLegacyCost">50000000000</td>
+
+											 </tr>
+											 <tr id = "twentysecondLegacyRow">
+
+													 <td><a onclick = "legacySwordPermFourPurchase()" id = "fourthSwordPerm" class="waves-effect waves-light btn">Start with a Supreme Grade Holy Sword</a></td>
+													 <td id = "fourthSwordPermCost">100000000000</td>
+
+											 </tr>
+											 <tr id = "twentythirdLegacyRow">
+
+													 <td><a onclick = "legacyManualPermFourPurchase()" id = "fourthManualPerm" class="waves-effect waves-light btn">Start with a Supreme Sword Manual</a></td>
+													 <td id = "fourthManualPermCost">250000000000</td>
+
+											 </tr>
+											 <tr id = "twentyfourthLegacyRow">
+
+													 <td><a onclick = "legacyCultivationPermFourPurchase()" id = "fourthCultivationPerm" class="waves-effect waves-light btn">Start with a Supreme Cultivation Technique</a></td>
+													 <td id = "fourthCultivationPermCost">500000000000</td>
+
+											 </tr>
+											 <tr id = "twentyfifthLegacyRow">
+
+													 <td><a onclick = "legacyShopThreePurchase()" id = "thirdLegacyExtraShop" class="waves-effect waves-light btn">Unlock 3 more shop purchases</a></td>
+													 <td id = "thirdLegacyExtraShopCost">1000000000000</td>
+
+											 </tr>
+									 </tbody>
+
+							 </table>
 
             </div>
 		</div>
