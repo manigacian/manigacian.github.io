@@ -2150,7 +2150,7 @@ function getCookie(cname) {
 
 function checkCookie() {
     var user = getCookie("user");
-    if (user == "0.3") {
+    if (user == "0.3.1") {
 
         loadLocalSave();
 
@@ -2740,7 +2740,7 @@ function deleteLocalSave(){
 
 function localSave(){
 
-  setCookie("user", "0.3", 1000);
+  setCookie("user", "0.3.1", 1000);
 	setCookie("xp", xp, 1000);
 	setCookie("totalXp", totalXp, 1000);
 	setCookie("newLegacyPoints", newLegacyPoints, 1000);
@@ -2852,7 +2852,7 @@ function localSave(){
 
 }
 setInterval( function() {
-  setCookie("user", "0.3", 1000);
+  setCookie("user", "0.3.1", 1000);
 	setCookie("xp", xp, 1000);
 	setCookie("totalXp", totalXp, 1000);
 	setCookie("newLegacyPoints", newLegacyPoints, 1000);
