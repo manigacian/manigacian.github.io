@@ -25,10 +25,10 @@ var passiveFights = {
 	fifthFightCost: 6250,
 	sixthFightCost: 31250,
 	seventhFightCost: 156250,
-	eighthFightCost: 78125,
-	ninthFightCost: 390625,
-	tenthFightCost: 1953125,
-	eleventhFightCost: 9765625,
+	eighthFightCost: 781250,
+	ninthFightCost: 3906250,
+	tenthFightCost: 19531250,
+	eleventhFightCost: 97656250,
 	//and so on
 
 	firstFightBought: 0,
@@ -190,7 +190,7 @@ function passiveFightOne(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.firstFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.firstFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("firstFightPassive").setAttribute("style", "display: none;");
 
@@ -225,7 +225,7 @@ function passiveFightTwo(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.secondFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.secondFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("secondFightPassive").setAttribute("style", "display: none;");
 
@@ -260,7 +260,7 @@ function passiveFightThree(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.thirdFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.thirdFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("thirdFightPassive").setAttribute("style", "display: none;");
 
@@ -295,7 +295,7 @@ function passiveFightFour(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.fourthFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.fourthFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("fourthFightPassive").setAttribute("style", "display: none;");
 
@@ -330,7 +330,7 @@ function passiveFightFive(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.fifthFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.fifthFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("fifthFightPassive").setAttribute("style", "display: none;");
 
@@ -365,7 +365,7 @@ function passiveFightSix(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.sixthFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.sixthFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("sixthFightPassive").setAttribute("style", "display: none;");
 
@@ -400,7 +400,7 @@ function passiveFightSeven(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.seventhFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.seventhFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("seventhFightPassive").setAttribute("style", "display: none;");
 
@@ -435,7 +435,7 @@ function passiveFightEight(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.eighthFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.eighthFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("eighthFightPassive").setAttribute("style", "display: none;");
 
@@ -470,7 +470,7 @@ function passiveFightNine(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.ninthFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.ninthFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("ninthFightPassive").setAttribute("style", "display: none;");
 
@@ -505,7 +505,7 @@ function passiveFightTen(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.tenthFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.tenthFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("tenthFightPassive").setAttribute("style", "display: none;");
 
@@ -540,7 +540,7 @@ function passiveFightEleven(){
 
 		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 
-		if(passiveFights.eleventhFightBought == passiveFights.maxPassiveFights) {
+		if(passiveFights.eleventhFightBought >= passiveFights.maxPassiveFights) {
 
 			document.getElementById("eleventhFightPassive").setAttribute("style", "display: none;");
 
@@ -638,6 +638,20 @@ function legacyScreenUpdate(){
 	var tooltipAnchor = $('#passiveClickBtn');
 	tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerSecond + " cps");
 	tooltipAnchor.tooltip();
+
+	passiveFights.firstFightCost = 10;
+	passiveFights.secondFightCost = 50;
+	passiveFights.thirdFightCost = 250;
+	passiveFights.fourthFightCost = 1250;
+	passiveFights.fifthFightCost = 6250;
+	passiveFights.sixthFightCost = 31250;
+	passiveFights.seventhFightCost = 156250;
+	passiveFights.eighthFightCost = 781250;
+	passiveFights.ninthFightCost = 3906250;
+	passiveFights.tenthFightCost = 19531250;
+	passiveFights.eleventhFightCost = 97656250;
+
+
 	if (passiveFights.passFightOneInterval != null){
 
 		clearInterval(passiveFights.passFightOneInterval);
@@ -693,6 +707,7 @@ function legacyScreenUpdate(){
 		clearInterval(passiveFights.passFightElevenInterval);
 
 	}
+
 	document.getElementById("firstFightPassive").setAttribute("style", "display: block;");
 	document.getElementById("secondFightPassive").setAttribute("style", "display: block;");
 	document.getElementById("thirdFightPassive").setAttribute("style", "display: block;");
@@ -722,6 +737,8 @@ function legacyScreenUpdate(){
 	document.getElementById("seventhPurchaseRow").setAttribute("style", "display: none;");
 	document.getElementById("eighthPurchaseRow").setAttribute("style", "display: none;");
 	document.getElementById("ninthPurchaseRow").setAttribute("style", "display: none;");
+	document.getElementById("tenthPurchaseRow").setAttribute("style", "display: none;");
+	document.getElementById("eleventhPurchaseRow").setAttribute("style", "display: none;");
 }
 
 function legacyUpgrades() {
@@ -2203,29 +2220,29 @@ function loadLocalSave(){
 	clickInterval = parseInt(getCookie("clickInterval"));
 
 	passiveFights.maxPassiveFights = parseInt(getCookie("passiveFights.maxPassiveFights"));
-	passiveFights.firstFightBought = getCookie("passiveFights.firstFightBought");
-	passiveFights.secondFightBought = getCookie("passiveFights.secondFightBought");
-	passiveFights.thirdFightBought = getCookie("passiveFights.thirdFightBought");
-	passiveFights.fourthFightBought = getCookie("passiveFights.fourthFightBought");
-	passiveFights.fifthFightBought = getCookie("passiveFights.fifthFightBought");
-	passiveFights.sixthFightBought = getCookie("passiveFights.sixthFightBought");
-	passiveFights.seventhFightBought = getCookie("passiveFights.seventhFightBought");
-	passiveFights.eighthFightBought = getCookie("passiveFights.eighthFightBought");
-	passiveFights.ninthFightBought = getCookie("passiveFights.ninthFightBought");
-	passiveFights.tenthFightBought = getCookie("passiveFights.tenthFightBought");
-	passiveFights.eleventhFightBought = getCookie("passiveFights.eleventhFightBought");
+	passiveFights.firstFightBought = parseInt(getCookie("passiveFights.firstFightBought"));
+	passiveFights.secondFightBought = parseInt(getCookie("passiveFights.secondFightBought"));
+	passiveFights.thirdFightBought = parseInt(getCookie("passiveFights.thirdFightBought"));
+	passiveFights.fourthFightBought = parseInt(getCookie("passiveFights.fourthFightBought"));
+	passiveFights.fifthFightBought = parseInt(getCookie("passiveFights.fifthFightBought"));
+	passiveFights.sixthFightBought = parseInt(getCookie("passiveFights.sixthFightBought"));
+	passiveFights.seventhFightBought = parseInt(getCookie("passiveFights.seventhFightBought"));
+	passiveFights.eighthFightBought = parseInt(getCookie("passiveFights.eighthFightBought"));
+	passiveFights.ninthFightBought = parseInt(getCookie("passiveFights.ninthFightBought"));
+	passiveFights.tenthFightBought = parseInt(getCookie("passiveFights.tenthFightBought"));
+	passiveFights.eleventhFightBought = parseInt(getCookie("passiveFights.eleventhFightBought"));
 
-	passiveFights.firstFightCost = getCookie("passiveFights.firstFightCost");
-	passiveFights.secondFightCost = getCookie("passiveFights.secondFightCost");
-	passiveFights.thirdFightCost = getCookie("passiveFights.thirdFightCost");
-	passiveFights.fourthFightCost = getCookie("passiveFights.fourthFightCost");
-	passiveFights.fifthFightCost = getCookie("passiveFights.fifthFightCost");
-	passiveFights.sixthFightCost = getCookie("passiveFights.sixthFightCost");
-	passiveFights.seventhFightCost = getCookie("passiveFights.seventhFightCost");
-	passiveFights.eighthFightCost = getCookie("passiveFights.eighthFightCost");
-	passiveFights.ninthFightCost = getCookie("passiveFights.ninthFightCost");
-	passiveFights.tenthFightCost = getCookie("passiveFights.tenthFightCost");
-	passiveFights.eleventhFightCost = getCookie("passiveFights.eleventhFightCost");
+	passiveFights.firstFightCost = parseInt(getCookie("passiveFights.firstFightCost"));
+	passiveFights.secondFightCost = parseInt(getCookie("passiveFights.secondFightCost"));
+	passiveFights.thirdFightCost = parseInt(getCookie("passiveFights.thirdFightCost"));
+	passiveFights.fourthFightCost =parseInt(getCookie("passiveFights.fourthFightCost"));
+	passiveFights.fifthFightCost = parseInt(getCookie("passiveFights.fifthFightCost"));
+	passiveFights.sixthFightCost = parseInt(getCookie("passiveFights.sixthFightCost"));
+	passiveFights.seventhFightCost = parseInt(getCookie("passiveFights.seventhFightCost"));
+	passiveFights.eighthFightCost = parseInt(getCookie("passiveFights.eighthFightCost"));
+	passiveFights.ninthFightCost = parseInt(getCookie("passiveFights.ninthFightCost"));
+	passiveFights.tenthFightCost = parseInt(getCookie("passiveFights.tenthFightCost"));
+	passiveFights.eleventhFightCost = parseInt(getCookie("passiveFights.eleventhFightCost"));
 
 	legacyUpgradesBought.legacyUpgradeOne = getCookie("legacyUpgradesBought.legacyUpgradeOne");
 	legacyUpgradesBought.legacyUpgradeTwo = getCookie("legacyUpgradesBought.legacyUpgradeTwo");
