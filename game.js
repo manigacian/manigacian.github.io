@@ -2255,7 +2255,7 @@ function loadLocalSave(){
 
 	updateValues();
 
-	if (totalXp >= 900){
+	if (legacyPoints >= 0){
 
 		legacyUnlock();
 		updateLegacyTable();
