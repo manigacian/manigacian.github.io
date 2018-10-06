@@ -2225,10 +2225,10 @@ function loadLocalSave(){
 	cultivationTechnique = parseFloat(getCookie("cultivationTechnique"));
 	document.getElementById("progress").setAttribute("max", parseInt(getCookie("max")));
 
-	document.getElementById("eighthFightRow").setAttribute("style", getCookie("eightFightRow"));
+	document.getElementById("eighthFightRow").setAttribute("style", getCookie("eighthFightRow"));
 	document.getElementById("ninthFightRow").setAttribute("style", getCookie("ninthFightRow"));
-	document.getElementById("ninthFightRow").setAttribute("style", getCookie("tenthFightRow"));
-	document.getElementById("tenthFightRow").setAttribute("style", getCookie("eleventhFightRow"));
+	document.getElementById("tenthFightRow").setAttribute("style", getCookie("tenthFightRow"));
+	document.getElementById("eleventhFightRow").setAttribute("style", getCookie("eleventhFightRow"));
 
 	document.getElementById("firstTrainCost").innerHTML = parseInt(getCookie("firstTrainCost"));
 	document.getElementById("secondTrainCost").innerHTML = parseInt(getCookie("secondTrainCost"));
@@ -2242,10 +2242,10 @@ function loadLocalSave(){
 	document.getElementById("tenthTrainCost").innerHTML = parseInt(getCookie("tenthTrainCost"));
 	document.getElementById("eleventhTrainCost").innerHTML = parseInt(getCookie("eleventhTrainCost"));
 
-	document.getElementById("eighthTrainRow").setAttribute("style", getCookie("eightTrainRow"));
+	document.getElementById("eighthTrainRow").setAttribute("style", getCookie("eighthTrainRow"));
 	document.getElementById("ninthTrainRow").setAttribute("style", getCookie("ninthTrainRow"));
-	document.getElementById("ninthTrainRow").setAttribute("style", getCookie("tenthTrainRow"));
-	document.getElementById("tenthTrainRow").setAttribute("style", getCookie("eleventhTrainRow"));
+	document.getElementById("tenthTrainRow").setAttribute("style", getCookie("tenthTrainRow"));
+	document.getElementById("eleventhTrainRow").setAttribute("style", getCookie("eleventhTrainRow"));
 
 	document.getElementById("firstPurchaseRow").setAttribute("style", getCookie("firstPurchaseRow"));
 	document.getElementById("secondPurchaseRow").setAttribute("style", getCookie("secondPurchaseRow"));
