@@ -792,14 +792,14 @@ function legacyScreenUpdate(){
 
 function legacyUpgrades() {
 
-	if (legacyUpgradesBought.legacyUpgradeOne == true){
+	if ((legacyUpgradesBought.legacyUpgradeOne == true)||(legacyUpgradesBought.legacyUpgradeOne == "true")){
 
 		passiveFights.maxPassiveFights = passiveFights.maxPassiveFights + 2;
 
 		document.getElementById("firstLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeTwo == true){
+	if ((legacyUpgradesBought.legacyUpgradeTwo == true)||(legacyUpgradesBought.legacyUpgradeTwo == "true")){
 
 		money = money + parseInt(document.getElementById("firstPurchaseCost").innerHTML);
 
@@ -808,7 +808,7 @@ function legacyUpgrades() {
 		document.getElementById("secondLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeThree == true){
+	if ((legacyUpgradesBought.legacyUpgradeThree == true)||(legacyUpgradesBought.legacyUpgradeThree == "true")){
 
 		money = money + parseInt(document.getElementById("secondPurchaseCost").innerHTML);
 
@@ -817,7 +817,7 @@ function legacyUpgrades() {
 		document.getElementById("thirdLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeFour == true){
+	if ((legacyUpgradesBought.legacyUpgradeFour == true)||(legacyUpgradesBought.legacyUpgradeFour == "true")){
 
 		money = money + parseInt(document.getElementById("thirdPurchaseCost").innerHTML);
 
@@ -826,7 +826,7 @@ function legacyUpgrades() {
 		document.getElementById("fourthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeFive == true){
+	if ((legacyUpgradesBought.legacyUpgradeFive == true)||(legacyUpgradesBought.legacyUpgradeFive == "true")){
 
 		document.getElementById("seventhPurchaseRow").setAttribute("style", "");
 		document.getElementById("eighthPurchaseRow").setAttribute("style", "");
@@ -835,14 +835,14 @@ function legacyUpgrades() {
 		document.getElementById("fifthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeSix == true){
+	if ((legacyUpgradesBought.legacyUpgradeSix == true)||(legacyUpgradesBought.legacyUpgradeSix == "true")){
 
 		passiveFights.maxPassiveFights = passiveFights.maxPassiveFights + 2;
 
 		document.getElementById("sixthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeSeven == true){
+	if ((legacyUpgradesBought.legacyUpgradeSeven == true)||(legacyUpgradesBought.legacyUpgradeSeven == "true")){
 
 		money = money + parseInt(document.getElementById("fourthPurchaseCost").innerHTML);
 
@@ -851,7 +851,7 @@ function legacyUpgrades() {
 		document.getElementById("seventhLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeEight == true){
+	if ((legacyUpgradesBought.legacyUpgradeEight == true)||(legacyUpgradesBought.legacyUpgradeEight == "true")){
 
 		money = money + parseInt(document.getElementById("fifthPurchaseCost").innerHTML);
 
@@ -860,7 +860,7 @@ function legacyUpgrades() {
 		document.getElementById("eighthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeNine == true){
+	if ((legacyUpgradesBought.legacyUpgradeNine == true)||(legacyUpgradesBought.legacyUpgradeNine == "true")){
 
 		money = money + parseInt(document.getElementById("sixthPurchaseCost").innerHTML);
 
@@ -869,7 +869,7 @@ function legacyUpgrades() {
 		document.getElementById("ninthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeTen == true){
+	if ((legacyUpgradesBought.legacyUpgradeTen == true)||(legacyUpgradesBought.legacyUpgradeTen == "true")){
 
 		document.getElementById("eighthFightRow").setAttribute("style", "");
 		document.getElementById("ninthFightRow").setAttribute("style", "");
@@ -877,7 +877,7 @@ function legacyUpgrades() {
 		document.getElementById("tenthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeEleven == true){
+	if ((legacyUpgradesBought.legacyUpgradeEleven == true)||(legacyUpgradesBought.legacyUpgradeEleven == "true")){
 
 		document.getElementById("eighthTrainRow").setAttribute("style", "");
 		document.getElementById("ninthTrainRow").setAttribute("style", "");
@@ -885,14 +885,14 @@ function legacyUpgrades() {
 		document.getElementById("eleventhLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeTwelve == true){
+	if ((legacyUpgradesBought.legacyUpgradeTwelve == true)||(legacyUpgradesBought.legacyUpgradeTwelve == "true")){
 
 		passiveFights.maxPassiveFights = passiveFights.maxPassiveFights + 2;
 
 		document.getElementById("twelfthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeThirteen == true){
+	if ((legacyUpgradesBought.legacyUpgradeThirteen == true)||(legacyUpgradesBought.legacyUpgradeThirteen == "true")){
 
 		money = money + parseInt(document.getElementById("seventhPurchaseCost").innerHTML);
 
@@ -901,7 +901,7 @@ function legacyUpgrades() {
 		document.getElementById("thirteenthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeFourteen == true){
+	if ((legacyUpgradesBought.legacyUpgradeFourteen == true)||(legacyUpgradesBought.legacyUpgradeFourteen == "true")){
 
 		money = money + parseInt(document.getElementById("eighthPurchaseCost").innerHTML);
 
@@ -910,7 +910,7 @@ function legacyUpgrades() {
 		document.getElementById("fourteenthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeFifteen == true){
+	if ((legacyUpgradesBought.legacyUpgradeFifteen == true)||(legacyUpgradesBought.legacyUpgradeFifteen == "true")){
 
 		money = money + parseInt(document.getElementById("ninthPurchaseCost").innerHTML);
 
@@ -919,7 +919,7 @@ function legacyUpgrades() {
 		document.getElementById("fifteenthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeSixteen == true){
+	if ((legacyUpgradesBought.legacyUpgradeSixteen == true)||(legacyUpgradesBought.legacyUpgradeSixteen == "true")){
 
 		document.getElementById("tenthPurchaseRow").setAttribute("style", "");
 		document.getElementById("eleventhPurchaseRow").setAttribute("style", "");
@@ -928,19 +928,19 @@ function legacyUpgrades() {
 		document.getElementById("sixteenthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeSeventeen == true){
+	if ((legacyUpgradesBought.legacyUpgradeSeventeen == true)||(legacyUpgradesBought.legacyUpgradeSeventeen == "true")){
 
 		passiveFights.maxPassiveFights = passiveFights.maxPassiveFights + 2;
 
 		document.getElementById("seventeenthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeEighteen == true){
+	if ((legacyUpgradesBought.legacyUpgradeEighteen == true)||(legacyUpgradesBought.legacyUpgradeEighteen == "true")){
 
 		document.getElementById("eighteenthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeNineteen == true){
+	if ((legacyUpgradesBought.legacyUpgradeNineteen == true)||(legacyUpgradesBought.legacyUpgradeNineteen == "true")){
 
 		document.getElementById("tenthFightRow").setAttribute("style", "");
 		document.getElementById("eleventhFightRow").setAttribute("style", "");
@@ -948,7 +948,7 @@ function legacyUpgrades() {
 		document.getElementById("nineteenthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeTwenty == true){
+	if ((legacyUpgradesBought.legacyUpgradeTwenty == true)||(legacyUpgradesBought.legacyUpgradeTwenty == "true")){
 
 		document.getElementById("tenthTrainRow").setAttribute("style", "");
 		document.getElementById("eleventhTrainRow").setAttribute("style", "");
@@ -956,14 +956,14 @@ function legacyUpgrades() {
 		document.getElementById("twentiethLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeTwentyone == true){
+	if ((legacyUpgradesBought.legacyUpgradeTwentyone == true)||(legacyUpgradesBought.legacyUpgradeTwentyone == "true")){
 
 		passiveFights.maxPassiveFights = passiveFights.maxPassiveFights + 2;
 
 		document.getElementById("twentyfirstLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeTwentytwo == true){
+	if ((legacyUpgradesBought.legacyUpgradeTwentytwo == true)||(legacyUpgradesBought.legacyUpgradeTwentytwo == "true")){
 
 		money = money + parseInt(document.getElementById("tenthPurchaseCost").innerHTML);
 
@@ -972,7 +972,7 @@ function legacyUpgrades() {
 		document.getElementById("twentysecondLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeTwentythree == true){
+	if ((legacyUpgradesBought.legacyUpgradeTwentythree == true)||(legacyUpgradesBought.legacyUpgradeTwentythree == "true")){
 
 		money = money + parseInt(document.getElementById("eleventhPurchaseCost").innerHTML);
 
@@ -981,7 +981,7 @@ function legacyUpgrades() {
 		document.getElementById("twentythirdLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeTwentyfour == true){
+	if ((legacyUpgradesBought.legacyUpgradeTwentyfour == true)||(legacyUpgradesBought.legacyUpgradeTwentyfour == "true")){
 
 		money = money + parseInt(document.getElementById("twelfthPurchaseCost").innerHTML);
 
@@ -990,7 +990,7 @@ function legacyUpgrades() {
 		document.getElementById("twentyfourthLegacyRow").setAttribute("style", "display: none;");
 
 	}
-	if (legacyUpgradesBought.legacyUpgradeTwentyfive == true){
+	if ((legacyUpgradesBought.legacyUpgradeTwentyfive == true)||(legacyUpgradesBought.legacyUpgradeTwentyfive == "true")){
 
 		document.getElementById("thirteenthPurchaseRow").setAttribute("style", "");
 		document.getElementById("fourteenthPurchaseRow").setAttribute("style", "");
