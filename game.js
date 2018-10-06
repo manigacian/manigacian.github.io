@@ -651,6 +651,51 @@ function legacyScreenUpdate(){
 	passiveFights.tenthFightCost = 19531250;
 	passiveFights.eleventhFightCost = 97656250;
 
+	passiveFights.firstFightBought = 0;
+	passiveFights.secondFightBought = 0;
+	passiveFights.thirdFightBought = 0;
+	passiveFights.fourthFightBought = 0;
+	passiveFights.fifthFightBought = 0;
+	passiveFights.sixthFightBought = 0;
+	passiveFights.seventhFightBought = 0;
+	passiveFights.eighthFightBought = 0;
+	passiveFights.ninthFightBought = 0;
+	passiveFights.tenthFightBought = 0;
+	passiveFights.eleventhFightBought = 0;
+
+	var tooltipAnchor = $('#firstFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.firstFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#secondFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.secondFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#thirdFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.thirdFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#fourthFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.fourthFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#fifthFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.fifthFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#sixthFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.sixthFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#seventhFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.seventhFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#eighthFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.eighthFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#ninthFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.ninthFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#tenthFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.tenthFightCost + " S.S.");
+	tooltipAnchor.tooltip();
+	var tooltipAnchor = $('#eleventhFightPassive');
+	tooltipAnchor.attr('data-tooltip', "Auto Fight: Does this fight automatically, once every second (per upgrade) - " + passiveFights.eleventhFightCost + " S.S.");
+	tooltipAnchor.tooltip();
 
 	if (passiveFights.passFightOneInterval != null){
 
@@ -727,6 +772,10 @@ function legacyScreenUpdate(){
 	document.getElementById("fifthTrainCost").innerHTML = 10000;
 	document.getElementById("sixthTrainCost").innerHTML = 100000;
 	document.getElementById("seventhTrainCost").innerHTML = 1000000;
+	document.getElementById("eighthTrainCost").innerHTML = 10000000;
+	document.getElementById("ninthTrainCost").innerHTML = 100000000;
+	document.getElementById("tenthTrainCost").innerHTML = 1000000000;
+	document.getElementById("eleventhTrainCost").innerHTML = 10000000000;
 
 	document.getElementById("firstPurchaseRow").setAttribute("style", "");
 	document.getElementById("secondPurchaseRow").setAttribute("style", "");
