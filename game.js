@@ -616,6 +616,9 @@ function legacy(){
 	passiveFights.maxPassiveFights = 1;
 	legacyScreenUpdate();
 	calculateLegacyBoost();
+	document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + incrementAmount.toFixed(3);
+	document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
+	document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + (incrementAmount * boostFactor).toFixed(3);
 	legacyUpgrades();
 
 }
@@ -1789,6 +1792,15 @@ function Train(trainId){
 
 		document.getElementById(trainCostName).innerHTML = trainCost * 2;
 
+		document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + incrementAmount.toFixed(3);
+
+		if (legacyPoints > 0){
+
+			document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
+			document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + (incrementAmount * boostFactor).toFixed(3);
+
+		}
+
 	}
 
 }
@@ -2321,9 +2333,11 @@ function loadLocalSave(){
 
 	updateValues();
 
-	if (legacyPoints >= 0){
+	if (legacyPoints > 0){
 
 		legacyUnlock();
+		document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
+		document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + (incrementAmount * boostFactor).toFixed(3);
 		updateLegacyTable();
 
 	}
@@ -2338,6 +2352,7 @@ function updateValues(){
 	document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
 	document.getElementById("money").innerHTML = "Spirit Stones: " + money;
 	document.getElementById("progress").setAttribute("value", xp);
+	document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + incrementAmount.toFixed(3);
 	// fixing tooltip
 	var tooltipAnchor = $('#passiveClickBtn');
 		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerInterval + " cps");
