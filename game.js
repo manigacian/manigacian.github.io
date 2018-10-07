@@ -2333,7 +2333,7 @@ function loadLocalSave(){
 
 	updateValues();
 
-	if (legacyPoints > 0){
+	if ((legacyPoints > 0))||(totalXp >=60){
 
 		legacyUnlock();
 		document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
