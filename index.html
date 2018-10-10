@@ -2,6 +2,17 @@
 <html>
 	<head>
 
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55391971-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-55391971-2');
+</script>
+
+
 		<!--Import materialize.css-->
       	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"  media="screen,projection"/>
 
@@ -199,7 +210,7 @@
      		 			<tr>
 
      		 				<td><a onclick = "Train('thirdTrain')" id = "thirdTrain" class="waves-effect waves-light btn">Get Guidance from a Xiantian</a></td>
-     		 				<td id = "thirdTrainCost">1e+2</td>
+     		 				<td id = "thirdTrainCost">100</td>
      		 				<td id = "thirdTrainReward">0.009</td>
 
      		 			</tr>
@@ -291,7 +302,7 @@
      		 			<tr style = "" id = "firstPurchaseRow">
 
      		 				<td><a onclick = "firstSwordPurchase()" id = "firstPurchase" class="waves-effect waves-light btn">Basic Sword</a></td>
-     		 				<td id = "firstPurchaseCost">1e+2</td>
+     		 				<td id = "firstPurchaseCost">100</td>
      		 				<td id = "firstPurchaseUse">Increase Power by 0.15</td>
 
      		 			</tr>
@@ -299,7 +310,7 @@
      		 			<tr style = "" id = "secondPurchaseRow">
 
      		 				<td><a onclick = "firstManualPurchase()" id = "secondPurchase" class="waves-effect waves-light btn">Basic Sword Manual</a></td>
-     		 				<td id = "secondPurchaseCost">5e+2</td>
+     		 				<td id = "secondPurchaseCost">500</td>
      		 				<td id = "secondPurchaseUse">Increase Power by 0.15</td>
 
      		 			</tr>
@@ -307,7 +318,7 @@
      		 			<tr style = "" id = "thirdPurchaseRow">
 
      		 				<td><a onclick = "firstCultivationPurchase()" id = "thirdPurchase" class="waves-effect waves-light btn">Basic Cultivation Manual</a></td>
-     		 				<td id = "thirdPurchaseCost">7.5e+2</td>
+     		 				<td id = "thirdPurchaseCost">750</td>
      		 				<td id = "thirdPurchaseUse">0.1 extra power every future rankup</td>
 
      		 			</tr>
@@ -443,13 +454,13 @@
 											 <tr id = "secondLegacyRow">
 
 													 <td><a onclick = "legacySwordPermOnePurchase()" id = "firstSwordPerm" class="waves-effect waves-light btn">Start with a Basic Sword</a></td>
-													 <td id = "firstSwordPermCost">2.5e+2</td>
+													 <td id = "firstSwordPermCost">250</td>
 
 											 </tr>
 											 <tr id = "thirdLegacyRow">
 
 													 <td><a onclick = "legacyManualPermOnePurchase()" id = "firstManualPerm" class="waves-effect waves-light btn">Start with a Basic Sword Manual</a></td>
-													 <td id = "firstManualPermCost">5e+2</td>
+													 <td id = "firstManualPermCost">500</td>
 
 											 </tr>
 											 <tr id = "fourthLegacyRow">
