@@ -1822,12 +1822,12 @@ function Train(trainId){
 
 		document.getElementById(trainCostName).innerHTML = convertNumbers(trainCost * 2);
 
-		document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + convertNumbers(incrementAmount);
+		document.getElementById("displayClickPower").innerHTML = "YYour current xp per click is: " + convertNumbers(incrementAmount);
 
 		if (legacyPoints > 0){
 
 			document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
-			document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + convertNumbers(incrementAmount * boostFactor);
+			document.getElementById("displayClickPowerLegacy").innerHTML = "Your current current xp per click with legacy bonus is: " + convertNumbers(incrementAmount * boostFactor);
 
 		}
 
