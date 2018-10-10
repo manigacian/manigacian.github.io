@@ -626,9 +626,9 @@ function legacy(){
 	passiveFights.maxPassiveFights = 1;
 	legacyScreenUpdate();
 	calculateLegacyBoost();
-	document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + convertNumbers(incrementAmount);
+	document.getElementById("displayClickPower").innerHTML = "Your current xp per click is: " + convertNumbers(incrementAmount);
 	document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
-	document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + convertNumbers(incrementAmount * boostFactor);
+	document.getElementById("displayClickPowerLegacy").innerHTML = "Your current xp per click with legacy bonus is: " + convertNumbers(incrementAmount * boostFactor);
 	legacyUpgrades();
 
 }
@@ -2382,7 +2382,7 @@ function updateValues(){
 	document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 	document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 	document.getElementById("progress").setAttribute("value", xp);
-	document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + convertNumbers(incrementAmount);
+	document.getElementById("displayClickPower").innerHTML = "Your current xp per click is: " + convertNumbers(incrementAmount);
 	// fixing tooltip
 	var tooltipAnchor = $('#passiveClickBtn');
 		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerInterval + " cps");
