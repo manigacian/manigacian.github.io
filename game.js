@@ -2367,7 +2367,7 @@ function loadLocalSave(){
 
 		legacyUnlock();
 		document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
-		document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + (incrementAmount * boostFactor).toFixed(3);
+		document.getElementById("displayClickPowerLegacy").innerHTML = "Your current xp per click with legacy bonus is: " + (incrementAmount * boostFactor).toFixed(3);
 		updateLegacyTable();
 
 	}
