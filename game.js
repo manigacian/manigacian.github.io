@@ -98,7 +98,7 @@ function increaseXp(currentXp, incrementAmount) {
 
 	document.getElementById("progress").setAttribute("value", xp);
 
-	document.getElementById("xp").innerHTML = "Xp: " + currentXp.toFixed(3);
+	document.getElementById("xp").innerHTML = "Xp: " + convertNumbers(currentXp);
 
 	//doAllWinChance();
 
@@ -125,7 +125,7 @@ function passiveClicks(){
 
 		money = money - clickCost;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		clickCost = clickCost * 2;
 
@@ -151,7 +151,7 @@ function passiveClicks(){
 
 		money = money - clickCost;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		clickCost = clickCost * 2;
 
@@ -188,7 +188,7 @@ function passiveFightOne(){
 
 		passiveFights.firstFightCost = passiveFights.firstFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.firstFightBought >= passiveFights.maxPassiveFights) {
 
@@ -223,7 +223,7 @@ function passiveFightTwo(){
 
 		passiveFights.secondFightCost = passiveFights.secondFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.secondFightBought >= passiveFights.maxPassiveFights) {
 
@@ -258,7 +258,7 @@ function passiveFightThree(){
 
 		passiveFights.thirdFightCost = passiveFights.thirdFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.thirdFightBought >= passiveFights.maxPassiveFights) {
 
@@ -293,7 +293,7 @@ function passiveFightFour(){
 
 		passiveFights.fourthFightCost = passiveFights.fourthFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.fourthFightBought >= passiveFights.maxPassiveFights) {
 
@@ -328,7 +328,7 @@ function passiveFightFive(){
 
 		passiveFights.fifthFightCost = passiveFights.fifthFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.fifthFightBought >= passiveFights.maxPassiveFights) {
 
@@ -363,7 +363,7 @@ function passiveFightSix(){
 
 		passiveFights.sixthFightCost = passiveFights.sixthFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.sixthFightBought >= passiveFights.maxPassiveFights) {
 
@@ -398,7 +398,7 @@ function passiveFightSeven(){
 
 		passiveFights.seventhFightCost = passiveFights.seventhFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.seventhFightBought >= passiveFights.maxPassiveFights) {
 
@@ -433,7 +433,7 @@ function passiveFightEight(){
 
 		passiveFights.eighthFightCost = passiveFights.eighthFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.eighthFightBought >= passiveFights.maxPassiveFights) {
 
@@ -468,7 +468,7 @@ function passiveFightNine(){
 
 		passiveFights.ninthFightCost = passiveFights.ninthFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.ninthFightBought >= passiveFights.maxPassiveFights) {
 
@@ -503,7 +503,7 @@ function passiveFightTen(){
 
 		passiveFights.tenthFightCost = passiveFights.tenthFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.tenthFightBought >= passiveFights.maxPassiveFights) {
 
@@ -538,7 +538,7 @@ function passiveFightEleven(){
 
 		passiveFights.eleventhFightCost = passiveFights.eleventhFightCost * 2;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		if(passiveFights.eleventhFightBought >= passiveFights.maxPassiveFights) {
 
@@ -573,7 +573,7 @@ function rankup(){
 
 		xp = xp - document.getElementById("progress").getAttribute("max");
 
-		document.getElementById("xp").innerHTML = "Xp: " + xp.toFixed(3);
+		document.getElementById("xp").innerHTML = "Xp: " + convertNumbers(xp);
 
 		rankPowerChange();
 
@@ -596,6 +596,16 @@ function rankup(){
 	}
 }
 
+function checkLegacy(){
+
+	if (confirm("Are you sure you wish to legacy? You will lose all of your current progress, bar legacy points and upgrades. However, you will gain legacy points, each legacy point granting a 1% boost to xp gain, and can also be used to purchase legacy upgrades.") == true) {
+
+		legacy();
+
+	}
+
+}
+
 function legacy(){
 
 	console.log("Changing Background Values");
@@ -616,9 +626,9 @@ function legacy(){
 	passiveFights.maxPassiveFights = 1;
 	legacyScreenUpdate();
 	calculateLegacyBoost();
-	document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + incrementAmount.toFixed(3);
+	document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + convertNumbers(incrementAmount);
 	document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
-	document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + (incrementAmount * boostFactor).toFixed(3);
+	document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + convertNumbers(incrementAmount * boostFactor);
 	legacyUpgrades();
 
 }
@@ -626,15 +636,15 @@ function legacy(){
 function legacyScreenUpdate(){
 
 	console.log("Updating Screen");
-	document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
-	document.getElementById("newLegacyPoints").innerHTML = "Legacy Points (Gained Upon Reset): " + newLegacyPoints;
-	document.getElementById("xp").innerHTML = "XP: " + xp;
+	document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
+	document.getElementById("newLegacyPoints").innerHTML = "Legacy Points (Gained Upon Reset): " + convertNumbers(newLegacyPoints);
+	document.getElementById("xp").innerHTML = "XP: " + convertNumbers(xp);
 	document.getElementById("currentRealm").innerHTML = "Mortal";
 	document.getElementById("progress").setAttribute("value", "0");
 	document.getElementById("progress").setAttribute("max", "1");
 	document.getElementById("rankupButton").setAttribute("style", "display: none;");
-	document.getElementById("currentPower").innerHTML = "Power: " + power;
-	document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+	document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
+	document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 	document.getElementById("meditate").src = "Assets/monk/transparent/monktransparent.png";
 	document.getElementById("passiveClickBtn").innerHTML = "Secluded Meditation - " + clickCost + " S.S.";
 	if (clickId != null){ clearInterval(clickId); }
@@ -770,15 +780,15 @@ function legacyScreenUpdate(){
 
 	document.getElementById("firstTrainCost").innerHTML = 1;
 	document.getElementById("secondTrainCost").innerHTML = 10;
-	document.getElementById("thirdTrainCost").innerHTML = 100;
-	document.getElementById("fourthTrainCost").innerHTML = 1000;
-	document.getElementById("fifthTrainCost").innerHTML = 10000;
-	document.getElementById("sixthTrainCost").innerHTML = 100000;
-	document.getElementById("seventhTrainCost").innerHTML = 1000000;
-	document.getElementById("eighthTrainCost").innerHTML = 10000000;
-	document.getElementById("ninthTrainCost").innerHTML = 100000000;
-	document.getElementById("tenthTrainCost").innerHTML = 1000000000;
-	document.getElementById("eleventhTrainCost").innerHTML = 10000000000;
+	document.getElementById("thirdTrainCost").innerHTML = 1e2;
+	document.getElementById("fourthTrainCost").innerHTML = 1e3;
+	document.getElementById("fifthTrainCost").innerHTML = 1e4;
+	document.getElementById("sixthTrainCost").innerHTML = 1e5;
+	document.getElementById("seventhTrainCost").innerHTML = 1e6;
+	document.getElementById("eighthTrainCost").innerHTML = 1e7;
+	document.getElementById("ninthTrainCost").innerHTML = 1e8;
+	document.getElementById("tenthTrainCost").innerHTML = 1e9;
+	document.getElementById("eleventhTrainCost").innerHTML = 1e10;
 
 	document.getElementById("firstPurchaseRow").setAttribute("style", "");
 	document.getElementById("secondPurchaseRow").setAttribute("style", "");
@@ -1011,7 +1021,7 @@ function legacyAutoFightOnePurchase() {
 		document.getElementById("firstLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("firstAutoFightLegacyCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		passiveFights.maxPassiveFights = 3;
 
@@ -1030,7 +1040,7 @@ function legacySwordPermOnePurchase() {
 		document.getElementById("secondLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("firstSwordPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("firstPurchaseRow").getAttribute("style") == "") {
 
@@ -1054,7 +1064,7 @@ function legacyManualPermOnePurchase() {
 		document.getElementById("thirdLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("firstManualPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("secondPurchaseRow").getAttribute("style") == "") {
 
@@ -1079,7 +1089,7 @@ function legacyCultivationPermOnePurchase() {
 		document.getElementById("fourthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("firstCultivationPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("thirdPurchaseRow").getAttribute("style") == "") {
 
@@ -1104,7 +1114,7 @@ function legacyShopOnePurchase() {
 		document.getElementById("fifthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("firstLegacyExtraShopCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		document.getElementById("seventhPurchaseRow").setAttribute("style", "");
 		document.getElementById("eighthPurchaseRow").setAttribute("style", "");
@@ -1125,7 +1135,7 @@ function legacyAutoFightTwoPurchase() {
 		document.getElementById("sixthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("secondAutoFightLegacyCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		passiveFights.maxPassiveFights = passiveFights.maxPassiveFights + 2;
 
@@ -1144,7 +1154,7 @@ function legacySwordPermTwoPurchase() {
 		document.getElementById("seventhLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("secondSwordPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("fourthPurchaseRow").getAttribute("style") == "") {
 
@@ -1168,7 +1178,7 @@ function legacyManualPermTwoPurchase(){
 		document.getElementById("eighthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("secondManualPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("fifthPurchaseRow").getAttribute("style") == "") {
 
@@ -1193,7 +1203,7 @@ function legacyCultivationPermTwoPurchase() {
 		document.getElementById("ninthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("secondCultivationPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("sixthPurchaseRow").getAttribute("style") == "") {
 
@@ -1216,7 +1226,7 @@ function legacyExtraFightOnePurchase(){
 	if (legacyPoints >= document.getElementById("firstLegacyExtraFightCost").innerHTML){
 
 		legacyPoints = legacyPoints - document.getElementById("firstLegacyExtraFightCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		document.getElementById("tenthLegacyRow").setAttribute("style", "display: none;");
 
@@ -1236,7 +1246,7 @@ function legacyExtraTrainOnePurchase(){
 	if (legacyPoints >= document.getElementById("firstLegacyExtraTrainCost").innerHTML){
 
 		legacyPoints = legacyPoints - document.getElementById("firstLegacyExtraTrainCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		document.getElementById("eleventhLegacyRow").setAttribute("style", "display: none;");
 
@@ -1258,7 +1268,7 @@ function legacyAutoFightThreePurchase() {
 		document.getElementById("twelfthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("thirdAutoFightLegacyCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		passiveFights.maxPassiveFights = passiveFights.maxPassiveFights + 2;
 
@@ -1277,7 +1287,7 @@ function legacySwordPermThreePurchase() {
 		document.getElementById("thirteenthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("thirdSwordPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("seventhPurchaseRow").getAttribute("style") == "") {
 
@@ -1301,7 +1311,7 @@ function legacyManualPermThreePurchase() {
 		document.getElementById("fourteenthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("thirdManualPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("eighthPurchaseRow").getAttribute("style") == "") {
 
@@ -1326,7 +1336,7 @@ function legacyCultivationPermThreePurchase() {
 		document.getElementById("fifteenthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("thirdCultivationPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("ninthPurchaseRow").getAttribute("style") == "") {
 
@@ -1351,7 +1361,7 @@ function legacyShopTwoPurchase() {
 		document.getElementById("sixteenthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("secondLegacyExtraShopCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		document.getElementById("tenthPurchaseRow").setAttribute("style", "");
 		document.getElementById("eleventhPurchaseRow").setAttribute("style", "");
@@ -1372,7 +1382,7 @@ function legacyAutoFightFourPurchase() {
 		document.getElementById("seventeenthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("fourthAutoFightLegacyCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		passiveFights.maxPassiveFights = passiveFights.maxPassiveFights + 2;
 
@@ -1390,7 +1400,7 @@ function autoRankupPurchase() {
 
 		legacyPoints = legacyPoints - document.getElementById("autoRankupCost").innerHTML;
 
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		document.getElementById("eighteenthLegacyRow").setAttribute("style", "display: none;");
 
@@ -1407,7 +1417,7 @@ function legacyExtraFightTwoPurchase(){
 	if (legacyPoints >= document.getElementById("secondLegacyExtraFightCost").innerHTML){
 
 		legacyPoints = legacyPoints - document.getElementById("secondLegacyExtraFightCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		document.getElementById("nineteenthLegacyRow").setAttribute("style", "display: none;");
 
@@ -1427,7 +1437,7 @@ function legacyExtraTrainTwoPurchase(){
 	if (legacyPoints >= document.getElementById("secondLegacyExtraTrainCost").innerHTML){
 
 		legacyPoints = legacyPoints - document.getElementById("secondLegacyExtraTrainCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		document.getElementById("twentiethLegacyRow").setAttribute("style", "display: none;");
 
@@ -1449,7 +1459,7 @@ function legacyAutoFightFivePurchase() {
 		document.getElementById("twentyfirstLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("fifthAutoFightLegacyCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		passiveFights.maxPassiveFights = passiveFights.maxPassiveFights + 2;
 
@@ -1468,7 +1478,7 @@ function legacySwordPermFourPurchase() {
 		document.getElementById("twentysecondLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("fourthSwordPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("tenthPurchaseRow").getAttribute("style") == "") {
 
@@ -1492,7 +1502,7 @@ function legacyManualPermFourPurchase() {
 		document.getElementById("twentythirdLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("fourthManualPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("eleventhPurchaseRow").getAttribute("style") == "") {
 
@@ -1517,7 +1527,7 @@ function legacyCultivationPermFourPurchase() {
 		document.getElementById("twentyfourthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("fourthCultivationPermCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		if (document.getElementById("twelfthPurchaseRow").getAttribute("style") == "") {
 
@@ -1542,7 +1552,7 @@ function legacyShopThreePurchase() {
 		document.getElementById("twentyfifthLegacyRow").setAttribute("style", "display: none;");
 
 		legacyPoints = legacyPoints - document.getElementById("thirdLegacyExtraShopCost").innerHTML;
-		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
+		document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
 
 		document.getElementById("thirteenthPurchaseRow").setAttribute("style", "");
 		document.getElementById("fourteenthPurchaseRow").setAttribute("style", "");
@@ -1578,7 +1588,7 @@ function legacyUnlock(){
 
 		}
 
-		document.getElementById("newLegacyPoints").innerHTML = "Legacy Points (Gained Upon Reset): " + newLegacyPoints.toFixed(3);
+		document.getElementById("newLegacyPoints").innerHTML = "Legacy Points (Gained Upon Reset): " + convertNumbers(newLegacyPoints);
 
 		console.log("Calculated Legacy Points")
 
@@ -1604,7 +1614,7 @@ function legacyPointCalculation(){
 
 	}
 
-	document.getElementById("newLegacyPoints").innerHTML = "Legacy Points (Gained Upon Reset): " + newLegacyPoints.toFixed(3);
+	document.getElementById("newLegacyPoints").innerHTML = "Legacy Points (Gained Upon Reset): " + convertNumbers(newLegacyPoints);
 
 }
 
@@ -1680,6 +1690,26 @@ function getFightWinChance(fightId){
 
 }
 
+function stopFloating(){
+
+	document.getElementById("meditate").src = "Assets/monk/transparent/monk2transparent.png";
+
+}
+
+function convertNumbers(number){
+
+	if (number < 100){
+
+		return number.toFixed(2);
+
+	} else {
+
+		return number.toExponential(2);
+
+	}
+
+}
+
 function Fight(fightId){
 
 	var powerName = fightId + "Power";
@@ -1697,7 +1727,7 @@ function Fight(fightId){
 
 		money = money + fightReward;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 	} else if (power >= (fightPower * 0.95)) {
 
@@ -1708,7 +1738,7 @@ function Fight(fightId){
 
 			money = money + fightReward;
 
-			document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+			document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		} else {
 
@@ -1729,7 +1759,7 @@ function Fight(fightId){
 
 			money = money + fightReward;
 
-			document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+			document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		} else {
 
@@ -1750,7 +1780,7 @@ function Fight(fightId){
 
 			money = money + fightReward;
 
-			document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+			document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		} else {
 
@@ -1779,25 +1809,25 @@ function Train(trainId){
 	var trainCostName = trainId + "Cost";
 	var trainRewardName = trainId + "Reward";
 
-	var trainCost = parseInt(document.getElementById(trainCostName).innerHTML);
+	var trainCost = Number(document.getElementById(trainCostName).innerHTML);
 	var trainReward = parseFloat(document.getElementById(trainRewardName).innerHTML);
 
 	if (money >= trainCost) {
 
 		money = money - trainCost;
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		incrementAmount = incrementAmount + trainReward;
 
-		document.getElementById(trainCostName).innerHTML = trainCost * 2;
+		document.getElementById(trainCostName).innerHTML = convertNumbers(trainCost * 2);
 
-		document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + incrementAmount.toFixed(3);
+		document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + convertNumbers(incrementAmount);
 
 		if (legacyPoints > 0){
 
 			document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
-			document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + (incrementAmount * boostFactor).toFixed(3);
+			document.getElementById("displayClickPowerLegacy").innerHTML = "Your current click power with legacy bonus is: " + convertNumbers(incrementAmount * boostFactor);
 
 		}
 
@@ -1813,11 +1843,11 @@ function firstSwordPurchase(){
 
 		money = money - parseInt(document.getElementById("firstPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 		swordBonus = swordBonus + 0.15;
 
@@ -1832,11 +1862,11 @@ function firstManualPurchase(){
 
 		money = money - parseInt(document.getElementById("secondPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 	}
 
@@ -1850,7 +1880,7 @@ function firstCultivationPurchase(){
 
 		money = money - parseInt(document.getElementById("thirdPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		cultivationTechnique = cultivationTechnique + 0.1;
 
@@ -1866,11 +1896,11 @@ function secondSwordPurchase(){
 
 		money = money - parseInt(document.getElementById("fourthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 		swordBonus = swordBonus + 0.15;
 
@@ -1885,11 +1915,11 @@ function secondManualPurchase(){
 
 		money = money - parseInt(document.getElementById("fifthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 	}
 
@@ -1903,7 +1933,7 @@ function secondCultivationPurchase(){
 
 		money = money - parseInt(document.getElementById("sixthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		cultivationTechnique = cultivationTechnique + 0.1;
 
@@ -1913,17 +1943,17 @@ function secondCultivationPurchase(){
 
 function thirdSwordPurchase(){
 
-	if (parseInt(money) >= parseInt(document.getElementById("seventhPurchaseCost").innerHTML)){
+	if (money >= parseInt(document.getElementById("seventhPurchaseCost").innerHTML)){
 
 		document.getElementById("seventhPurchaseRow").setAttribute("style", "display:none;");
 
 		money = money - parseInt(document.getElementById("seventhPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 		swordBonus = swordBonus + 0.15;
 
@@ -1938,11 +1968,11 @@ function thirdManualPurchase(){
 
 		money = money - parseInt(document.getElementById("eighthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 	}
 
@@ -1956,7 +1986,7 @@ function thirdCultivationPurchase(){
 
 		money = money - parseInt(document.getElementById("ninthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		cultivationTechnique = cultivationTechnique + 0.1;
 
@@ -1972,11 +2002,11 @@ function fourthSwordPurchase(){
 
 		money = money - parseInt(document.getElementById("tenthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 		swordBonus = swordBonus + 0.15;
 
@@ -1991,11 +2021,11 @@ function fourthManualPurchase(){
 
 		money = money - parseInt(document.getElementById("eleventhPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 	}
 
@@ -2009,7 +2039,7 @@ function fourthCultivationPurchase(){
 
 		money = money - parseInt(document.getElementById("twelfthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		cultivationTechnique = cultivationTechnique + 0.1;
 
@@ -2025,11 +2055,11 @@ function fifthSwordPurchase(){
 
 		money = money - parseInt(document.getElementById("thirteenthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 		swordBonus = swordBonus + 0.15;
 
@@ -2044,11 +2074,11 @@ function fifthManualPurchase(){
 
 		money = money - parseInt(document.getElementById("fourteenthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		power = power + 0.15;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 	}
 
@@ -2062,7 +2092,7 @@ function fifthCultivationPurchase(){
 
 		money = money - parseInt(document.getElementById("fifteenthPurchaseCost").innerHTML);
 
-		document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+		document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 
 		cultivationTechnique = cultivationTechnique + 0.1;
 
@@ -2082,7 +2112,7 @@ function rankPowerChange(){
 
 		power = power + 0.5 + cultivationTechnique;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 
 	} else if (document.getElementById("progress").getAttribute("max").split("", 1) == 3) {
@@ -2091,7 +2121,7 @@ function rankPowerChange(){
 
 		power = power + 0.3 + cultivationTechnique;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 	} else if (document.getElementById("progress").getAttribute("max").split("", 1) == 5) {
 
@@ -2099,7 +2129,7 @@ function rankPowerChange(){
 
 		power = power + 0.3 + cultivationTechnique;
 
-		document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
+		document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
 
 	}
 
@@ -2242,17 +2272,17 @@ function loadLocalSave(){
 	document.getElementById("tenthFightRow").setAttribute("style", getCookie("tenthFightRow"));
 	document.getElementById("eleventhFightRow").setAttribute("style", getCookie("eleventhFightRow"));
 
-	document.getElementById("firstTrainCost").innerHTML = parseInt(getCookie("firstTrainCost"));
-	document.getElementById("secondTrainCost").innerHTML = parseInt(getCookie("secondTrainCost"));
-	document.getElementById("thirdTrainCost").innerHTML = parseInt(getCookie("thirdTrainCost"));
-	document.getElementById("fourthTrainCost").innerHTML = parseInt(getCookie("fourthTrainCost"));
-	document.getElementById("fifthTrainCost").innerHTML = parseInt(getCookie("fifthTrainCost"));
-	document.getElementById("sixthTrainCost").innerHTML = parseInt(getCookie("sixthTrainCost"));
-	document.getElementById("seventhTrainCost").innerHTML = parseInt(getCookie("seventhTrainCost"));
-	document.getElementById("eighthTrainCost").innerHTML = parseInt(getCookie("eighthTrainCost"));
-	document.getElementById("ninthTrainCost").innerHTML = parseInt(getCookie("ninthTrainCost"));
-	document.getElementById("tenthTrainCost").innerHTML = parseInt(getCookie("tenthTrainCost"));
-	document.getElementById("eleventhTrainCost").innerHTML = parseInt(getCookie("eleventhTrainCost"));
+	document.getElementById("firstTrainCost").innerHTML = convertNumbers(parseInt(getCookie("firstTrainCost")));
+	document.getElementById("secondTrainCost").innerHTML = convertNumbers(parseInt(getCookie("secondTrainCost")));
+	document.getElementById("thirdTrainCost").innerHTML = convertNumbers(parseInt(getCookie("thirdTrainCost")));
+	document.getElementById("fourthTrainCost").innerHTML = convertNumbers(parseInt(getCookie("fourthTrainCost")));;
+	document.getElementById("fifthTrainCost").innerHTML = convertNumbers(parseInt(getCookie("fifthTrainCost")));
+	document.getElementById("sixthTrainCost").innerHTML = convertNumbers(parseInt(getCookie("sixthTrainCost")));
+	document.getElementById("seventhTrainCost").innerHTML = convertNumbers(parseInt(getCookie("seventhTrainCost")));
+	document.getElementById("eighthTrainCost").innerHTML = convertNumbers(parseInt(getCookie("eighthTrainCost")));
+	document.getElementById("ninthTrainCost").innerHTML = convertNumbers(parseInt(getCookie("ninthTrainCost")));
+	document.getElementById("tenthTrainCost").innerHTML = convertNumbers(parseInt(getCookie("tenthTrainCost")));
+	document.getElementById("eleventhTrainCost").innerHTML = convertNumbers(parseInt(getCookie("eleventhTrainCost")));
 
 	document.getElementById("eighthTrainRow").setAttribute("style", getCookie("eighthTrainRow"));
 	document.getElementById("ninthTrainRow").setAttribute("style", getCookie("ninthTrainRow"));
@@ -2333,7 +2363,7 @@ function loadLocalSave(){
 
 	updateValues();
 
-	if ((legacyPoints > 0)||(totalXp >=60)){
+	if ((legacyPoints > 0)||(totalXp >=850)){
 
 		legacyUnlock();
 		document.getElementById("displayClickPowerLegacy").setAttribute("style", "text-align: center;");
@@ -2346,13 +2376,13 @@ function loadLocalSave(){
 
 function updateValues(){
 
-	document.getElementById("xp").innerHTML = "Xp: " + xp.toFixed(3);
-	document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + legacyPoints.toFixed(3);
-	document.getElementById("newLegacyPoints").innerHTML = "Legacy Points (Gained Upon Reset): " + newLegacyPoints;
-	document.getElementById("currentPower").innerHTML = "Power: " + power.toFixed(3);
-	document.getElementById("money").innerHTML = "Spirit Stones: " + money;
+	document.getElementById("xp").innerHTML = "Xp: " + convertNumbers(xp);
+	document.getElementById("legacyPoints").innerHTML = "Legacy Points: " + convertNumbers(legacyPoints);
+	document.getElementById("newLegacyPoints").innerHTML = "Legacy Points (Gained Upon Reset): " + convertNumbers(newLegacyPoints);
+	document.getElementById("currentPower").innerHTML = "Power: " + convertNumbers(power);
+	document.getElementById("money").innerHTML = "Spirit Stones: " + convertNumbers(money);
 	document.getElementById("progress").setAttribute("value", xp);
-	document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + incrementAmount.toFixed(3);
+	document.getElementById("displayClickPower").innerHTML = "Your current base click power is: " + convertNumbers(incrementAmount);
 	// fixing tooltip
 	var tooltipAnchor = $('#passiveClickBtn');
 		tooltipAnchor.attr('data-tooltip', "Gain passive clicks per second - cost: " + clickCost + " spirit stones, current: " + clickPerInterval + " cps");
@@ -2802,6 +2832,13 @@ function deleteLocalSave(){
 
 }
 
+function hardReset(){
+
+	deleteLocalSave();
+	alert("Please refresh the page for your save to be fully reset!")
+
+}
+
 function localSave(){
 
   setCookie("user", "0.3.1", 1000);
@@ -2912,9 +2949,13 @@ function localSave(){
 	setCookie("legacyUpgradesBought.legacyUpgradeTwentyfour", legacyUpgradesBought.legacyUpgradeTwentyfour, 1000);
 	setCookie("legacyUpgradesBought.legacyUpgradeTwentyfive", legacyUpgradesBought.legacyUpgradeTwentyfive, 1000);
 
+	document.getElementById("localSaveConfirm").innerHTML = "Saved!";
+
 	console.log("Saved!");
 
-}
+	setTimeout( function(){document.getElementById("localSaveConfirm").innerHTML = ""; }, 5000);
+
+	}
 setInterval( function() {
   setCookie("user", "0.3.1", 1000);
 	setCookie("xp", xp, 1000);
